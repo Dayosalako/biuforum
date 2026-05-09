@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Registry | Biu Forum</title>
+    <meta name="description" content="Join the Official Biu Emirate Citizens Registry — connect with your community, receive verified updates, and be counted among the global Biu family.">
+    <meta property="og:title" content="Join the Registry | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .form-input {
+            width: 100%; padding: 16px 20px; border-radius: 16px;
+            border: 2px solid #e2e8f0; font-size: 15px; font-weight: 500;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            background: white; color: #0f172a;
+        }
+        .form-input:focus { border-color: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,0.08); }
+        .form-label { display: block; font-size: 13px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+        .form-group { margin-bottom: 24px; }
+        .benefit-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #f1f5f9; }
+        .benefit-item:last-child { border-bottom: none; }
+        .benefit-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .step-num { width: 36px; height: 36px; border-radius: 50%; background: #16a34a; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+        /* Success state */
+        #successState { display: none; }
+        #successState.show { display: flex; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"   onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="emirs.html"   onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"    onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"  onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html" onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="py-24 px-6 lg:px-20 bg-gradient-to-br from-green-700 to-green-900 text-white text-center">
+    <div class="max-w-4xl mx-auto fade-in">
+        <div class="w-20 h-20 bg-white/10 border-2 border-white/20 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-8">
+            <i class="fas fa-id-card-clip"></i>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-green-300 text-xs font-bold uppercase tracking-widest mb-8">
+            <span class="flex h-2 w-2 rounded-full bg-green-400 badge-pulse"></span>
+            Official Citizens Registry
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+            Join the Biu<br><span class="text-green-300">Citizens Registry</span>
+        </h1>
+        <p class="text-xl text-green-100 max-w-2xl mx-auto font-light leading-relaxed">
+            Be counted. Be connected. Be part of the official record of Biu citizens across Nigeria and the world.
+        </p>
+    </div>
+</header>
+
+<!-- ═══ MAIN GRID ══════════════════════════════════════════════════════════════ -->
+<div class="max-w-7xl mx-auto px-6 lg:px-20 py-20">
+    <div class="grid lg:grid-cols-[1fr_420px] gap-16 items-start">
+
+        <!-- LEFT: Form -->
+        <div>
+            <h2 class="text-3xl font-black text-slate-900 mb-3">Register Your Details</h2>
+            <p class="text-slate-500 mb-10 text-lg">All fields marked <span class="text-red-500 font-bold">*</span> are required. Your information is kept strictly confidential.</p>
+
+            <!-- Success state -->
+            <div id="successState" class="hidden flex-col items-center text-center py-16 bg-white rounded-[2rem] border-2 border-green-200 shadow-xl mb-8">
+                <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-4xl mb-6">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="text-3xl font-black text-slate-900 mb-4">You're Registered!</h3>
+                <p id="successName" class="text-xl text-green-700 font-bold mb-4"></p>
+                <p class="text-slate-500 max-w-md mx-auto leading-relaxed mb-8">Welcome to the Official Biu Citizens Registry. You will now receive important updates and announcements from the Emirate Council.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="news.html"   class="bg-green-700 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-800 transition">Read Latest News</a>
+                    <a href="events.html" class="border-2 border-green-700 text-green-700 px-8 py-4 rounded-2xl font-bold hover:bg-green-50 transition">Browse Events</a>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="registryForm" onsubmit="submitRegistry(event)" class="bg-white rounded-[2rem] p-10 shadow-xl border border-slate-100">
+
+                <!-- Personal Info -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-black text-slate-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 text-sm"><i class="fas fa-user"></i></span>
+                        Personal Information
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label class="form-label">First Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="firstName" class="form-input" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="lastName" class="form-input" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" id="regEmail" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" id="regPhone" class="form-input" placeholder="+234 XXX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth</label>
+                        <input type="date" id="regDob" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select id="regGender" class="form-input">
+                            <option value="">Select gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Prefer not to say</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Community Info -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-black text-slate-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-700 text-sm"><i class="fas fa-map-marker-alt"></i></span>
+                        Community Details
+                    </h3>
+                    <div class="form-group">
+                        <label class="form-label">Local Government Area <span class="text-red-500">*</span></label>
+                        <select id="regLGA" class="form-input" required>
+                            <option value="">Select your LGA of origin</option>
+                            <option>Biu LGA</option>
+                            <option>Hawul LGA</option>
+                            <option>Kwaya Kusar LGA</option>
+                            <option>Bayo LGA</option>
+                            <option>Other (Borno State)</option>
+                            <option>Diaspora</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Village / Ward of Origin</label>
+                        <input type="text" id="regVillage" class="form-input" placeholder="Name of your village or ward">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Location / State <span class="text-red-500">*</span></label>
+                        <input type="text" id="regLocation" class="form-input" placeholder="e.g. Maiduguri, Abuja, Lagos, UK" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Occupation / Profession</label>
+                        <input type="text" id="regOccupation" class="form-input" placeholder="e.g. Teacher, Business, Civil Service">
+                    </div>
+                </div>
+
+                <!-- Consent -->
+                <div class="mb-8 p-6 bg-slate-50 rounded-2xl">
+                    <h3 class="text-lg font-black text-slate-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-700 text-sm"><i class="fas fa-shield"></i></span>
+                        Consent & Privacy
+                    </h3>
+                    <div class="space-y-4">
+                        <label class="flex items-start gap-4 cursor-pointer">
+                            <input type="checkbox" id="consentUpdates" class="w-5 h-5 rounded mt-1 text-green-700 flex-shrink-0">
+                            <span class="text-sm text-slate-600 leading-relaxed">I agree to receive news, event updates, and official announcements from the Biu Forum platform.</span>
+                        </label>
+                        <label class="flex items-start gap-4 cursor-pointer">
+                            <input type="checkbox" id="consentRegistry" required class="w-5 h-5 rounded mt-1 text-green-700 flex-shrink-0">
+                            <span class="text-sm text-slate-600 leading-relaxed"><span class="text-red-500 font-bold">*</span> I confirm that the information I have provided is accurate, and I consent to my details being recorded on the Official Biu Citizens Registry.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn"
+                        class="w-full bg-green-700 text-white py-5 rounded-2xl font-bold text-lg hover:bg-green-800 transition-all shadow-xl hover:shadow-green-200">
+                    <i class="fas fa-id-card-clip mr-3"></i>Join the Registry
+                </button>
+            </form>
+        </div>
+
+        <!-- RIGHT: Benefits + Steps -->
+        <div class="space-y-8">
+
+            <!-- Benefits -->
+            <div class="bg-white rounded-[2rem] p-8 shadow-md border border-slate-100">
+                <h3 class="text-xl font-black text-slate-900 mb-6">Why Join the Registry?</h3>
+                <div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon bg-green-100 text-green-700"><i class="fas fa-bell"></i></div>
+                        <div><h4 class="font-bold text-slate-900 mb-1">Official Notifications</h4><p class="text-sm text-slate-500 leading-relaxed">Receive verified announcements directly from the Emirate Council and LGA leadership.</p></div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon bg-amber-100 text-amber-700"><i class="fas fa-calendar-check"></i></div>
+                        <div><h4 class="font-bold text-slate-900 mb-1">Event Invitations</h4><p class="text-sm text-slate-500 leading-relaxed">Be the first to know about town halls, community gatherings, and cultural events.</p></div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon bg-blue-100 text-blue-700"><i class="fas fa-graduation-cap"></i></div>
+                        <div><h4 class="font-bold text-slate-900 mb-1">Scholarship Alerts</h4><p class="text-sm text-slate-500 leading-relaxed">Never miss an educational opportunity. Scholarship announcements go to registered citizens first.</p></div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon bg-purple-100 text-purple-700"><i class="fas fa-handshake"></i></div>
+                        <div><h4 class="font-bold text-slate-900 mb-1">Community Network</h4><p class="text-sm text-slate-500 leading-relaxed">Be part of a growing network of Biu citizens united by shared identity and purpose.</p></div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon bg-red-100 text-red-700"><i class="fas fa-shield-halved"></i></div>
+                        <div><h4 class="font-bold text-slate-900 mb-1">Your Data is Safe</h4><p class="text-sm text-slate-500 leading-relaxed">Your information is stored securely and will never be sold, shared, or misused.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How it works -->
+            <div class="bg-green-700 rounded-[2rem] p-8 text-white">
+                <h3 class="text-xl font-black mb-6 text-white">How It Works</h3>
+                <div class="space-y-5">
+                    <div class="flex gap-4 items-start">
+                        <div class="step-num flex-shrink-0">1</div>
+                        <div><h4 class="font-bold mb-1">Fill the form</h4><p class="text-green-100 text-sm leading-relaxed">Enter your personal and community details in under 3 minutes.</p></div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="step-num flex-shrink-0">2</div>
+                        <div><h4 class="font-bold mb-1">Confirmed instantly</h4><p class="text-green-100 text-sm leading-relaxed">You receive an on-screen confirmation immediately after submitting.</p></div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="step-num flex-shrink-0">3</div>
+                        <div><h4 class="font-bold mb-1">Stay connected</h4><p class="text-green-100 text-sm leading-relaxed">Receive updates, event alerts, and official news directly to your inbox.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="bg-slate-900 rounded-[2rem] p-8 text-white text-center">
+                <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-4">Registry Growth</p>
+                <div class="text-5xl font-black mb-2">1,200+</div>
+                <p class="text-slate-400 text-sm">Citizens already registered</p>
+                <div class="mt-4 text-xs text-slate-500">Biu · Hawul · Kwaya Kusar · Bayo · Diaspora</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+async function submitRegistry(e) {
+    e.preventDefault();
+    const btn        = document.getElementById('submitBtn');
+    const firstName  = document.getElementById('firstName').value.trim();
+    const lastName   = document.getElementById('lastName').value.trim();
+    const name       = firstName + ' ' + lastName;
+    const email      = document.getElementById('regEmail').value.trim();
+    const phone      = document.getElementById('regPhone').value.trim();
+    const dob        = document.getElementById('regDob').value;
+    const gender     = document.getElementById('regGender').value;
+    const lga        = document.getElementById('regLGA').value;
+    const village    = document.getElementById('regVillage').value.trim();
+    const location   = document.getElementById('regLocation').value.trim();
+    const occupation = document.getElementById('regOccupation').value.trim();
+
+    btn.disabled  = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Saving your details…';
+
+    // 1 — Save FULL registry data to Firestore
+    try {
+        const db = getDb();
+        if (db) {
+            await db.collection('subscribers').add({
+                firstName, lastName, name, email, phone,
+                dob, gender, lga, village,
+                currentLocation: location,
+                occupation,
+                source:   'Join Registry Page — Full Form',
+                page:     window.location.pathname,
+                type:     'full_registry',
+                subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            console.log('✓ Full registry saved to Firestore');
+        }
+    } catch(err) {
+        console.warn('Firestore registry save:', err.message);
+    }
+
+    // 2 — Send email to Mailchimp newsletter list
+    sendToMailchimp(email, firstName);
+
+    // 3 — Show success screen
+    document.getElementById('registryForm').style.display = 'none';
+    const success = document.getElementById('successState');
+    success.classList.remove('hidden');
+    success.classList.add('show');
+    document.getElementById('successName').textContent = 'Welcome, ' + name + '!';
+
+    showSiteToast('🎉 ' + name + ' successfully registered!', 'success');
+    success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

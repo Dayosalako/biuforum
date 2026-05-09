@@ -1,0 +1,116 @@
+╔══════════════════════════════════════════════════════════════╗
+║   BIU FORUM — DEPLOY IN 3 STEPS                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — SET UP FIRESTORE (5 minutes, do this FIRST)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A) Enable Firestore:
+   → https://console.firebase.google.com → biu-forum project
+   → Firestore Database → Create database
+   → Start in production mode → Next
+   → Choose region: europe-west3 → Enable
+
+B) Paste Security Rules:
+   → Firestore Database → Rules tab
+   → Delete all existing text, paste this exactly:
+
+   rules_version = '2';
+   service cloud.firestore {
+     match /databases/{database}/documents {
+       match /news/{docId} {
+         allow read: if true;
+         allow create, update, delete: if request.auth != null;
+       }
+       match /events/{docId} {
+         allow read: if true;
+         allow create, update, delete: if request.auth != null;
+       }
+       match /images/{docId} {
+         allow read: if true;
+         allow create, update, delete: if request.auth != null;
+       }
+       match /activity/{docId} {
+         allow read, write: if request.auth != null;
+       }
+     }
+   }
+
+   → Click "Publish"
+
+C) Create your Admin login:
+   → Authentication → Users → Add User
+   → Email: (your admin email)
+   → Password: (strong password — min 8 chars)
+   → Click "Add User"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — REPLACE YOUR PLACEHOLDER IMAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Replace these placeholder files with your real photos
+(keep the SAME filename when replacing):
+
+  assets/images/hero.jpg           ← Homepage hero (wide/landscape)
+  assets/images/about.jpg          ← About section photo
+  assets/images/heritage-hero.jpg  ← Heritage page hero
+  assets/images/heritage-map.jpg   ← Map or landmark photo
+  assets/images/news1.jpg          ← Homepage news card 1
+  assets/images/news2.jpg          ← Homepage news card 2
+  assets/images/news3.jpg          ← Homepage news card 3
+
+  assets/images/emirs/             ← Replace each portrait photo
+  (8 portrait photos — see assets/images/README.txt for names)
+
+  TIP: Compress photos at squoosh.app before replacing
+       Target: under 300KB per image for fast loading
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — DEPLOY TO NETLIFY (2 minutes, FREE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to https://netlify.com → Sign up free (use Google account)
+2. On your dashboard click: "Add new site" → "Deploy manually"
+3. DRAG the entire "biuforum" FOLDER onto the upload area
+4. Wait 30 seconds → your site is LIVE!
+
+You will get a URL like: https://random-name-123.netlify.app
+
+To set a custom domain (e.g. biuforum.com.ng):
+   → Site settings → Domain management → Add custom domain
+   → Follow the DNS instructions from your domain registrar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALSO REQUIRED — Add your live URL to Firebase
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Firebase Authentication only works from authorized domains.
+After deploying:
+   → Firebase Console → Authentication → Settings
+   → Authorized domains → Add domain
+   → Type your Netlify URL (e.g. random-name-123.netlify.app)
+   → Click Add
+
+Without this step the login will be blocked by Firebase.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+YOUR SITE PAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  yoursite.netlify.app/              → Homepage
+  yoursite.netlify.app/heritage      → Heritage & Culture
+  yoursite.netlify.app/emirs         → Past Emirs & Dignitaries
+  yoursite.netlify.app/news          → News & Announcements
+  yoursite.netlify.app/events        → Community Events
+  yoursite.netlify.app/gallery       → Photo Gallery
+  yoursite.netlify.app/admin         → Admin Panel (login required)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Zion Netcom Solutions Limited
+  Phone:  +234 706 758 9333
+  Email:  info@biuforum.com
+  © 2026 Biu Forum. All rights reserved.

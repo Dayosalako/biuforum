@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership | Biu Forum</title>
+    <meta name="description" content="Meet the current leadership of the Biu Emirate — the Emir, district heads, and council members who serve the community.">
+    <meta property="og:title" content="Leadership | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .leader-card { transition: all 0.35s ease; }
+        .leader-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
+        .tier-divider { display: flex; align-items: center; gap: 16px; margin: 56px 0 40px; }
+        .tier-divider .line { flex: 1; height: 1px; background: #e2e8f0; }
+        .tier-label { font-size: 11px; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="history.html"  onclick="toggleMenu()" class="hover:text-white transition">History of Biu</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative py-32 px-6 lg:px-20 overflow-hidden" style="background:linear-gradient(160deg,#052e16,#0f172a);">
+    <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center fade-in">
+        <div class="w-20 h-20 bg-amber-500/20 border-2 border-amber-500/40 rounded-full flex items-center justify-center text-amber-400 text-3xl mx-auto mb-8">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-amber-400 text-xs font-bold uppercase tracking-widest mb-8">
+            <i class="fas fa-star"></i> Current Leadership
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tighter">
+            Leadership of<br><span class="text-amber-400">Biu Emirate</span>
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+            The men and women who serve and lead the Biu community — from the Emirate Council to Local Government and community institutions.
+        </p>
+    </div>
+</header>
+
+<!-- ═══ EMIR — FEATURED ═══════════════════════════════════════════════════════ -->
+<section class="py-24 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="tier-divider">
+        <div class="line"></div>
+        <div class="tier-label"><i class="fas fa-crown mr-2 text-amber-500"></i>The Emirate</div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Emir card — full width featured -->
+    <div class="bg-gradient-to-br from-green-700 to-green-900 rounded-[3rem] overflow-hidden shadow-2xl mb-16 scroll-anim">
+        <div class="grid lg:grid-cols-2 gap-0">
+            <div class="h-80 lg:h-auto bg-white/10 flex items-center justify-center text-white/20 text-[120px] relative overflow-hidden">
+                <!-- Replace with: assets/images/leadership/current-emir.jpg -->
+                <img src="assets/images/leadership/current-emir.jpg"
+                     onerror="this.style.display='none'"
+                     class="absolute inset-0 w-full h-full object-cover object-top" alt="Current Emir of Biu">
+                <i class="fas fa-user relative z-10"></i>
+            </div>
+            <div class="p-12 lg:p-16 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 w-fit">
+                    <i class="fas fa-crown"></i> His Royal Highness
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-black text-white mb-3 leading-tight">The Emir of Biu</h2>
+                <p class="text-amber-300 font-bold text-lg mb-6">Kuthli Viyu · Biu Emirate, Borno State</p>
+                <p class="text-white/70 leading-relaxed mb-8 text-lg">
+                    ⚠ <em>Replace this placeholder with the name and biography of the current Emir of Biu once confirmed by the client. The Emir serves as the traditional ruler of the Biu Emirate, encompassing the Biu, Hawul, Kwaya Kusar, and Bayo Local Government Areas of Borno State.</em>
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-white/10 border border-white/20 px-4 py-2 rounded-full text-white text-xs font-bold uppercase tracking-widest">
+                        <i class="fas fa-location-dot mr-2 text-green-400"></i>Biu, Borno State
+                    </div>
+                    <div class="bg-white/10 border border-white/20 px-4 py-2 rounded-full text-white text-xs font-bold uppercase tracking-widest">
+                        <i class="fas fa-users mr-2 text-green-400"></i>4 LGAs
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emirate Council grid -->
+    <h3 class="text-2xl font-black text-slate-900 mb-8">Emirate Council Members</h3>
+    <p class="text-slate-500 bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-10 text-sm">
+        <i class="fas fa-pen-nib text-amber-600 mr-2"></i>
+        <strong>Placeholder:</strong> Replace these cards with the actual names, titles, and photos of the current Emirate Council members. Add or remove cards as needed.
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card template — duplicate and fill for each council member -->
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-md scroll-anim">
+            <div class="h-52 bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center text-white/20 text-6xl relative overflow-hidden">
+                <img src="assets/images/leadership/council-1.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover object-top" alt="">
+                <i class="fas fa-user relative z-10"></i>
+                <div class="absolute top-4 left-4 bg-amber-500/80 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase text-white tracking-wider">Council Member</div>
+            </div>
+            <div class="p-7">
+                <h4 class="text-lg font-black text-slate-900 mb-1">Council Member Name</h4>
+                <p class="text-amber-600 font-bold text-sm mb-1">Title / District</p>
+                <p class="text-slate-400 text-xs font-medium mb-3">Jurisdiction area</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Brief biography or role description for this council member goes here.</p>
+            </div>
+        </div>
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-md scroll-anim">
+            <div class="h-52 bg-gradient-to-br from-green-700 to-green-900 flex items-center justify-center text-white/20 text-6xl relative overflow-hidden">
+                <img src="assets/images/leadership/council-2.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover object-top" alt="">
+                <i class="fas fa-user relative z-10"></i>
+                <div class="absolute top-4 left-4 bg-green-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase text-white tracking-wider">Council Member</div>
+            </div>
+            <div class="p-7">
+                <h4 class="text-lg font-black text-slate-900 mb-1">Council Member Name</h4>
+                <p class="text-green-700 font-bold text-sm mb-1">Title / District</p>
+                <p class="text-slate-400 text-xs font-medium mb-3">Jurisdiction area</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Brief biography or role description for this council member goes here.</p>
+            </div>
+        </div>
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-md scroll-anim">
+            <div class="h-52 bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center text-white/20 text-6xl relative overflow-hidden">
+                <img src="assets/images/leadership/council-3.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover object-top" alt="">
+                <i class="fas fa-user relative z-10"></i>
+                <div class="absolute top-4 left-4 bg-blue-600/80 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase text-white tracking-wider">Council Member</div>
+            </div>
+            <div class="p-7">
+                <h4 class="text-lg font-black text-slate-900 mb-1">Council Member Name</h4>
+                <p class="text-blue-700 font-bold text-sm mb-1">Title / District</p>
+                <p class="text-slate-400 text-xs font-medium mb-3">Jurisdiction area</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Brief biography or role description for this council member goes here.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ LOCAL GOVERNMENT ═══════════════════════════════════════════════════════ -->
+<section class="py-16 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="tier-divider">
+        <div class="line"></div>
+        <div class="tier-label"><i class="fas fa-building-columns mr-2 text-blue-600"></i>Local Government</div>
+        <div class="line"></div>
+    </div>
+    <p class="text-slate-500 bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-10 text-sm">
+        <i class="fas fa-pen-nib text-blue-600 mr-2"></i>
+        <strong>Placeholder:</strong> Add the current LGA Chairmen for Biu, Hawul, Kwaya Kusar, and Bayo LGAs.
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-sm scroll-anim text-center p-8">
+            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-3xl mx-auto mb-5 relative overflow-hidden">
+                <img src="assets/images/leadership/biu-lga.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover rounded-full" alt="">
+                <i class="fas fa-user relative z-10"></i>
+            </div>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-2">Biu LGA</div>
+            <h4 class="font-black text-slate-900 mb-1">Chairman Name</h4>
+            <p class="text-sm text-slate-500">LGA Chairman</p>
+        </div>
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-sm scroll-anim text-center p-8">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-3xl mx-auto mb-5 relative overflow-hidden">
+                <img src="assets/images/leadership/hawul-lga.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover rounded-full" alt="">
+                <i class="fas fa-user relative z-10"></i>
+            </div>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-green-600 mb-2">Hawul LGA</div>
+            <h4 class="font-black text-slate-900 mb-1">Chairman Name</h4>
+            <p class="text-sm text-slate-500">LGA Chairman</p>
+        </div>
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-sm scroll-anim text-center p-8">
+            <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 text-3xl mx-auto mb-5 relative overflow-hidden">
+                <img src="assets/images/leadership/kwaya-lga.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover rounded-full" alt="">
+                <i class="fas fa-user relative z-10"></i>
+            </div>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-amber-600 mb-2">Kwaya Kusar LGA</div>
+            <h4 class="font-black text-slate-900 mb-1">Chairman Name</h4>
+            <p class="text-sm text-slate-500">LGA Chairman</p>
+        </div>
+        <div class="leader-card bg-white rounded-[2rem] overflow-hidden border-2 border-slate-100 shadow-sm scroll-anim text-center p-8">
+            <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-purple-700 text-3xl mx-auto mb-5 relative overflow-hidden">
+                <img src="assets/images/leadership/bayo-lga.jpg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover rounded-full" alt="">
+                <i class="fas fa-user relative z-10"></i>
+            </div>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-purple-600 mb-2">Bayo LGA</div>
+            <h4 class="font-black text-slate-900 mb-1">Chairman Name</h4>
+            <p class="text-sm text-slate-500">LGA Chairman</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ══════════════════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6 lg:px-20 bg-slate-50 mt-10">
+    <div class="max-w-4xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+        <div>
+            <h3 class="text-3xl font-black text-slate-900 mb-3">View Our Historical Leaders</h3>
+            <p class="text-slate-500 text-lg">Explore the full legacy of those who shaped the Biu Emirate.</p>
+        </div>
+        <a href="emirs.html" class="bg-green-700 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-green-800 transition shadow-xl whitespace-nowrap flex-shrink-0">
+            <i class="fas fa-crown mr-3"></i>Past Emirs & Dignitaries
+        </a>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

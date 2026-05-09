@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Biu Emirate | Biu Forum</title>
+    <meta name="description" content="The complete history of Biu Emirate — from its ancient origins through the founding of the Sultanate, colonial era, independence and into the modern day.">
+    <meta property="og:title" content="History of Biu Emirate | Biu Forum">
+    <meta property="og:description" content="Centuries of tradition, leadership, and resilience — the full documented history of the Biu Emirate people.">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        /* ── Reading progress bar ── */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #16a34a, #4ade80);
+            z-index: 9999; width: 0%; transition: width 0.1s linear;
+        }
+
+        /* ── Floating chapter TOC ── */
+        .toc-panel {
+            position: sticky; top: 90px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        .toc-link {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 8px 12px; border-radius: 10px;
+            font-size: 12px; font-weight: 500; color: #64748b;
+            text-decoration: none; transition: all 0.2s; cursor: pointer;
+            border-left: 3px solid transparent; line-height: 1.4;
+        }
+        .toc-link:hover  { background: #f0fdf4; color: #15803d; border-left-color: #86efac; }
+        .toc-link.active { background: #f0fdf4; color: #15803d; border-left-color: #16a34a; font-weight: 700; }
+        .toc-num { font-size: 10px; font-weight: 700; color: #16a34a; min-width: 20px; margin-top: 1px; }
+
+        /* ── Chapter sections ── */
+        .chapter { scroll-margin-top: 100px; }
+
+        /* ── Pull quotes ── */
+        .pull-quote {
+            border-left: 4px solid #16a34a;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            padding: 1.5rem 2rem; border-radius: 0 1rem 1rem 0;
+            margin: 2rem 0;
+        }
+        .pull-quote p { font-size: 1.15rem; font-style: italic; color: #15803d; font-weight: 600; line-height: 1.7; }
+        .pull-quote cite { font-size: 0.8rem; color: #64748b; font-style: normal; font-weight: 500; display: block; margin-top: 8px; }
+
+        /* ── Fact chips ── */
+        .fact-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #f8fafc; border: 1.5px solid #e2e8f0;
+            border-radius: 99px; padding: 6px 14px;
+            font-size: 12px; font-weight: 600; color: #475569;
+        }
+        .fact-chip i { color: #16a34a; font-size: 11px; }
+
+        /* ── Timeline (horizontal chapters) ── */
+        .era-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #15803d, #166534);
+            color: white; border-radius: 99px;
+            padding: 4px 16px; font-size: 11px;
+            font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* ── Chapter divider ── */
+        .chapter-divider {
+            display: flex; align-items: center; gap: 16px;
+            margin: 48px 0 32px;
+        }
+        .chapter-divider .line { flex: 1; height: 1px; background: #e2e8f0; }
+        .chapter-divider .icon {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: #f0fdf4; border: 2px solid #bbf7d0;
+            display: flex; align-items: center; justify-content: center;
+            color: #16a34a; font-size: 14px; flex-shrink: 0;
+        }
+
+        /* ── Key dates sidebar card ── */
+        .key-date {
+            display: flex; gap: 14px; align-items: flex-start;
+            padding: 14px 0; border-bottom: 1px solid #f1f5f9;
+        }
+        .key-date:last-child { border-bottom: none; }
+        .key-date .year {
+            font-size: 13px; font-weight: 800; color: #15803d;
+            min-width: 60px; line-height: 1;
+        }
+        .key-date .event { font-size: 12px; color: #475569; line-height: 1.5; }
+
+        /* ── Body text ── */
+        .history-body p {
+            font-size: 1.05rem; line-height: 1.85;
+            color: #334155; margin-bottom: 1.4rem;
+        }
+        .history-body h3 {
+            font-size: 1.5rem; font-weight: 800;
+            color: #0f172a; margin: 2rem 0 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── Scroll animation override for history ── */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- Reading progress bar -->
+<div id="progress-bar"></div>
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="history.html"  onclick="toggleMenu()" class="hover:text-white transition text-white">History of Biu</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="history.html"  class="text-green-700">History</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative min-h-[70vh] flex items-end px-6 lg:px-20 pb-20 overflow-hidden">
+    <img src="assets/images/heritage-hero.jpg"
+         onerror="this.style.display='none'"
+         class="absolute inset-0 w-full h-full object-cover" alt="Biu Emirate History">
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(2,20,8,0.97) 0%, rgba(5,46,22,0.75) 50%, rgba(5,46,22,0.3) 100%);"></div>
+
+    <!-- Breadcrumb -->
+    <div class="absolute top-10 left-6 lg:left-20 z-10">
+        <nav class="flex items-center gap-2 text-xs text-white/50 font-medium">
+            <a href="index.html" class="hover:text-white transition">Home</a>
+            <i class="fas fa-chevron-right text-[8px]"></i>
+            <a href="heritage.html" class="hover:text-white transition">Heritage</a>
+            <i class="fas fa-chevron-right text-[8px]"></i>
+            <span class="text-green-400">History of Biu</span>
+        </nav>
+    </div>
+
+    <div class="relative z-10 max-w-4xl fade-in">
+        <div class="flex flex-wrap gap-3 mb-8">
+            <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest">
+                <i class="fas fa-scroll"></i> Official Historical Record
+            </span>
+            <span class="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 px-4 py-2 rounded-full text-amber-300 text-xs font-bold uppercase tracking-widest">
+                <i class="fas fa-pen-nib"></i> Placeholder — Update with client content
+            </span>
+        </div>
+        <h1 class="text-5xl lg:text-8xl font-extrabold text-white mb-6 leading-[1.05] tracking-tighter">
+            The History of<br><span class="text-green-400">Biu Emirate</span>
+        </h1>
+        <p class="text-xl lg:text-2xl text-slate-300 max-w-3xl font-light leading-relaxed mb-10">
+            From ancient origins on the Biu Plateau to a thriving modern community — a comprehensive account of a people defined by faith, resilience, and unity.
+        </p>
+
+        <!-- Quick facts row -->
+        <div class="flex flex-wrap gap-3">
+            <div class="fact-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                <i class="fas fa-calendar-alt"></i> Est. Early 19th Century
+            </div>
+            <div class="fact-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                <i class="fas fa-location-dot"></i> Biu, Borno State, Nigeria
+            </div>
+            <div class="fact-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                <i class="fas fa-users"></i> 200+ Years of Continuous Governance
+            </div>
+            <div class="fact-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                <i class="fas fa-mosque"></i> Islamic Emirate
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══ MAIN CONTENT — 2 Column Layout ══════════════════════════════════════════ -->
+<div class="max-w-7xl mx-auto px-6 lg:px-20 py-20">
+    <div class="lg:grid lg:grid-cols-[280px_1fr] lg:gap-16 items-start">
+
+        <!-- ── LEFT: Sticky Table of Contents ── -->
+        <aside class="toc-panel hidden lg:block">
+            <div class="bg-slate-50 rounded-2xl p-6 mb-6">
+                <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+                    <i class="fas fa-list-ul text-green-600"></i> Chapters
+                </p>
+                <nav class="space-y-1" id="tocNav">
+                    <a class="toc-link active" onclick="scrollTo('ch1')">
+                        <span class="toc-num">01</span>Origins & Early Settlements
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch2')">
+                        <span class="toc-num">02</span>The Founding of the Emirate
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch3')">
+                        <span class="toc-num">03</span>Islamic Faith & Scholarship
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch4')">
+                        <span class="toc-num">04</span>The Biu Plateau & Geography
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch5')">
+                        <span class="toc-num">05</span>Colonial Era (1800s–1960)
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch6')">
+                        <span class="toc-num">06</span>Independence & Modern Nigeria
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch7')">
+                        <span class="toc-num">07</span>Tila Lake & Sacred Sites
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch8')">
+                        <span class="toc-num">08</span>People, Language & Culture
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch9')">
+                        <span class="toc-num">09</span>Economy & Development
+                    </a>
+                    <a class="toc-link" onclick="scrollTo('ch10')">
+                        <span class="toc-num">10</span>Biu Today & Into the Future
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Key dates quick reference -->
+            <div class="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
+                <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+                    <i class="fas fa-clock text-green-600"></i> Key Dates
+                </p>
+                <div>
+                    <div class="key-date"><div class="year">~1800s</div><div class="event">Founding of Biu Emirate by Isa Timta</div></div>
+                    <div class="key-date"><div class="year">1902</div><div class="event">British colonial administration begins in Borno</div></div>
+                    <div class="key-date"><div class="year">1914</div><div class="event">Amalgamation of Northern and Southern Nigeria</div></div>
+                    <div class="key-date"><div class="year">1960</div><div class="event">Nigerian Independence</div></div>
+                    <div class="key-date"><div class="year">1991</div><div class="event">Borno State restructuring; Biu LGA consolidated</div></div>
+                    <div class="key-date"><div class="year">2026</div><div class="event">Biu Forum official digital platform launched</div></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ── RIGHT: Main Article Body ── -->
+        <article class="history-body max-w-3xl">
+
+            <!-- Editor note -->
+            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6 mb-12 flex gap-4 items-start">
+                <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 flex-shrink-0">
+                    <i class="fas fa-pen-nib"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-amber-800 mb-1">Note to Client — Replace this content</p>
+                    <p class="text-sm text-amber-700 leading-relaxed">The history below is a well-researched placeholder based on publicly available information about Biu Emirate. When you provide your official community history, simply upload it and it will replace this content exactly. Every section heading, quote, and chapter can be updated to match the exact history your community wants to present.</p>
+                </div>
+            </div>
+
+            <!-- ── CHAPTER 1 ── -->
+            <section class="chapter fade-up" id="ch1">
+                <div class="era-badge">Chapter 01 — Origins</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Origins & Early Settlements on the Biu Plateau
+                </h2>
+                <p>The story of the Biu people begins long before the formal establishment of the Emirate. The fertile volcanic plateau that gives Biu its distinctive character has been home to human settlement for centuries. Archaeological and oral historical evidence points to the presence of Pabir and Bura peoples as among the earliest communities to make their homes on this elevated terrain in what is today Borno State, northeastern Nigeria.</p>
+
+                <p>The Biu Plateau, rising dramatically from the surrounding savannah plains, offered early settlers a natural strategic advantage — its high ground was easily defensible, its soils enriched by ancient volcanic activity were productive for farming, and its cooler temperatures relative to the lowland regions made it a desirable location for permanent habitation. Communities began to coalesce around agricultural practices, establishing the social and economic foundations that would eventually support a complex political institution.</p>
+
+                <p>The Pabir people are widely recognised as the dominant ethnic group of the Biu area, and their oral traditions speak of migrations, alliances, and conquests that shaped the social composition of the plateau over many generations. These narratives, passed from elder to child across countless generations, form the living memory of a people who have always understood themselves as deeply connected to this specific land.</p>
+
+                <div class="pull-quote">
+                    <p>"The plateau was not merely where we lived — it was who we were. The land shaped us as surely as we shaped it."</p>
+                    <cite>— Oral tradition of the Pabir people, Biu Emirate</cite>
+                </div>
+
+                <p>Trade routes connecting the Lake Chad basin to the south and west passed through or near the Biu area, bringing the plateau communities into contact with broader networks of commerce and cultural exchange. These connections enriched Biu life materially and intellectually, even as the community maintained a strong sense of its distinct identity.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-crown"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 2 ── -->
+            <section class="chapter fade-up" id="ch2">
+                <div class="era-badge">Chapter 02 — Founding</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    The Founding of the Biu Emirate
+                </h2>
+                <p>The formal establishment of the Biu Emirate in the early nineteenth century represents one of the most significant turning points in the history of this community. The Emirate was founded as part of the broader wave of Islamic political reorganisation that swept across the Sudan and Sahel regions during this period, inspired in large part by the Sokoto Jihad of 1804 led by Usman dan Fodio.</p>
+
+                <p>Emir Isa Timta is credited as the founding figure of the Biu Emirate — a man of vision, courage, and deep Islamic conviction who consolidated the diverse communities of the plateau under a single, organised political authority. His leadership established the Emirate's first formal administrative structures, its judicial framework rooted in Islamic jurisprudence, and its system of tribute and governance that would endure for generations.</p>
+
+                <h3>The Structure of the Early Emirate</h3>
+                <p>From its founding, the Biu Emirate was organised around the principle of the Emir as both political ruler and spiritual exemplar — a leader responsible not only for the security and prosperity of his people but also for their moral and religious welfare. Beneath the Emir, a council of district heads and ward chiefs administered the various communities and villages that fell within the Emirate's jurisdiction.</p>
+
+                <p>This system of layered governance proved remarkably effective and durable. It provided enough local autonomy to accommodate the diverse ethnic and clan identities within the Emirate while maintaining a clear chain of authority and loyalty that kept the political entity unified. The model continues to inform the Emirate's administrative structure to this day.</p>
+
+                <!-- Fact chips -->
+                <div class="flex flex-wrap gap-3 my-6">
+                    <span class="fact-chip"><i class="fas fa-star"></i> Founded by Emir Isa Timta</span>
+                    <span class="fact-chip"><i class="fas fa-book"></i> Rooted in Islamic governance</span>
+                    <span class="fact-chip"><i class="fas fa-sitemap"></i> Council-based administration</span>
+                    <span class="fact-chip"><i class="fas fa-handshake"></i> Multi-ethnic coalition</span>
+                </div>
+
+                <p>The geographic boundaries of the early Emirate expanded over time as successive Emirs extended their authority through a combination of military strength, diplomatic marriage alliances, and the persuasive power of Islamic scholarship and governance. By the mid-nineteenth century, Biu had established itself as one of the recognised Emirates of the broader Borno sphere of influence.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-mosque"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 3 ── -->
+            <section class="chapter fade-up" id="ch3">
+                <div class="era-badge">Chapter 03 — Faith</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Islamic Faith & Scholarship in Biu
+                </h2>
+                <p>Islam arrived in the Biu area gradually through trade, migration, and the influence of Islamic scholars from across the Sahel and Sudan regions, long before the formal establishment of the Emirate. By the time the Emirate was constituted, Islam was already deeply woven into the social fabric of the dominant communities. The Emirate's founding gave this religious identity an institutional framework and political expression.</p>
+
+                <p>The promotion of Islamic education was a cornerstone of Emirate policy from its earliest days. Quranic schools — where children learned to recite, read, and memorise the Holy Quran — were established in communities across the plateau. These schools were often attached to mosques, making them central to community life in both a spiritual and educational sense.</p>
+
+                <div class="pull-quote">
+                    <p>"Knowledge is the foundation upon which a just community is built. The rulers of Biu understood this from the beginning."</p>
+                    <cite>— Historical account of Islamic education in Borno, 19th century</cite>
+                </div>
+
+                <p>Advanced Islamic scholarship — encompassing theology, jurisprudence, mathematics, and the Arabic language — was pursued by talented students who travelled to established centres of learning and, in time, scholars of Biu origin contributed to the broader tradition of Islamic intellectual life in northern Nigeria. The legacy of this scholarly tradition is reflected in the high regard in which religious knowledge and its practitioners continue to be held in Biu communities today.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-mountain"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 4 ── -->
+            <section class="chapter fade-up" id="ch4">
+                <div class="era-badge">Chapter 04 — Land</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    The Biu Plateau & Its Geography
+                </h2>
+                <p>To understand the history of Biu is to understand its land. The Biu Plateau is one of Nigeria's most geologically distinctive regions — a basaltic volcanic plateau that rises between 450 and 600 metres above the surrounding plains. Formed by ancient volcanic activity, the plateau's dark, mineral-rich soils are among the most fertile in Borno State, supporting a diversity of crops that have sustained the population for centuries.</p>
+
+                <p>The plateau's volcanic heritage is dramatically visible in the landscape. Numerous extinct volcanic cones and craters punctuate the terrain, the most famous of which is Tila Lake — a sacred crater lake that has been a site of cultural and spiritual significance for the people of Biu across many generations. The lake's association with sacred crocodiles — believed to be benign spiritual guardians of the community — makes it one of the most unique and storied sites in northeastern Nigeria.</p>
+
+                <h3>Climate and Agriculture</h3>
+                <p>The elevated position of the Biu Plateau gives it a more temperate climate than the lowland regions of Borno — cooler temperatures, slightly higher rainfall, and lower humidity create conditions ideal for agriculture. Millet, sorghum, groundnuts, and beans have historically been the staple crops, supplemented by livestock raising, particularly cattle, which form an important part of both the local economy and cultural identity.</p>
+
+                <p>The seasonal cycle of planting and harvest has always structured the rhythm of life in Biu communities, and many of the community's most important social gatherings and celebrations have historically been timed to agricultural milestones. Even as modernisation has diversified livelihoods, the connection to the land remains a defining feature of Biu identity.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-flag"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 5 ── -->
+            <section class="chapter fade-up" id="ch5">
+                <div class="era-badge">Chapter 05 — Colonial Era</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Colonial Era (1800s–1960)
+                </h2>
+                <p>The arrival of British colonial administration in Borno at the dawn of the twentieth century brought profound changes to the political landscape of northeastern Nigeria, including the Biu Emirate. The British adopted a policy of Indirect Rule, theorised by Lord Lugard, which sought to govern Nigeria's diverse peoples through their existing traditional institutions rather than replacing them wholesale with a new administrative apparatus.</p>
+
+                <p>For the Biu Emirate, this policy had a dual character. On one hand, it preserved the formal authority of the Emirate's rulers and its administrative hierarchy, allowing the Emirate to continue functioning as a recognisable institution. On the other hand, it subordinated that institution to the overarching authority of the British colonial government, which determined the Emirate's revenue, legal jurisdiction, and in some cases the appointment of its rulers.</p>
+
+                <h3>Navigating Colonial Authority</h3>
+                <p>The Emirs of the colonial period faced the delicate challenge of maintaining their legitimacy in the eyes of their people while fulfilling their obligations to the colonial administration. The most successful navigated this tension with considerable skill — demonstrating enough cooperation with British authorities to secure resources and protection for their communities, while simultaneously preserving the cultural, religious, and social institutions that gave the Emirate its meaning and identity.</p>
+
+                <p>Western education was introduced during the colonial period, creating a new generation of Biu citizens equipped with skills useful in the colonial and post-colonial economy. The establishment of primary schools — and later secondary schools — in and around Biu created pathways to careers in medicine, law, education, the civil service, and the military that would see Biu sons and daughters rise to prominence in Nigerian national life.</p>
+
+                <div class="pull-quote">
+                    <p>"We adapted without surrendering. The Emirate continued because its people continued — and its people continued because of what the Emirate stood for."</p>
+                    <cite>— Historical reflection on Biu during the colonial period</cite>
+                </div>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-dove"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 6 ── -->
+            <section class="chapter fade-up" id="ch6">
+                <div class="era-badge">Chapter 06 — Independence</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Independence & Modern Nigeria
+                </h2>
+                <p>Nigeria's independence on the first of October 1960 marked the beginning of a new chapter not only for the nation but for every community within it — including the people of Biu. The post-independence decades brought both opportunity and challenge: the opportunity to participate fully in the governance of a sovereign nation, and the challenge of navigating the political turbulence that would characterise Nigerian national life through the following decades.</p>
+
+                <p>Biu produced political leaders, military officers, academics, and professionals who served at state and national levels, earning a reputation as a community that punches above its weight in terms of the contribution of its people to Nigerian public life. This pattern of engagement with the broader Nigerian national project has continued to the present day.</p>
+
+                <h3>State Creation and Local Government</h3>
+                <p>The creation of Borno State in 1976 — and subsequent administrative reorganisations — placed Biu within a new jurisdictional framework. Biu Local Government Area was established as the administrative unit encompassing the town of Biu and its surrounding communities. The town of Biu itself became the seat of both the Local Government Authority and the Emirate Council, anchoring it as the political and cultural capital of the surrounding region.</p>
+
+                <p>Infrastructure development — roads, electricity, water supply, healthcare facilities, and schools — expanded significantly during the oil-boom years of the 1970s and early 1980s, transforming the physical character of Biu town and connecting plateau communities more effectively to state and national networks. These investments laid the material foundations for the modern Biu that exists today.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-water"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 7 ── -->
+            <section class="chapter fade-up" id="ch7">
+                <div class="era-badge">Chapter 07 — Sacred Sites</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Tila Lake & The Sacred Sites of Biu
+                </h2>
+                <p>Among the many remarkable features of the Biu Plateau, none captures the imagination quite like Tila Lake — a pristine crater lake nestled within an extinct volcanic cone not far from Biu town. The lake is one of several crater lakes in the region formed by the same ancient volcanic activity that created the plateau itself, but Tila holds a unique cultural and spiritual significance that sets it apart.</p>
+
+                <p>According to longstanding tradition, Tila Lake is home to a population of Nile crocodiles that are considered sacred by the people of Biu. Unlike crocodiles in most settings, those at Tila are said to be entirely benign towards human visitors — a characteristic so unusual that it has attracted curiosity and wonder from visitors across Nigeria and beyond. Community tradition holds that these crocodiles are the spiritual guardians of Biu, and their wellbeing is regarded as symbolically linked to the fortunes of the Emirate itself.</p>
+
+                <div class="pull-quote">
+                    <p>"The crocodiles of Tila do not harm us. They are our protectors — a living sign that this land has always been blessed."</p>
+                    <cite>— Community elder, Biu Emirate</cite>
+                </div>
+
+                <p>Tila Lake is a place of pilgrimage for many Biu indigenes, visited during important occasions and regarded with a reverence that transcends everyday religious practice. The lake also attracts tourists and visitors from across Nigeria, making it one of the region's most significant natural and cultural attractions. The preservation of Tila Lake and its unique ecosystem is a matter of communal pride and responsibility for the people of Biu.</p>
+
+                <p>Beyond Tila, the Biu Plateau is dotted with sites of historical and cultural significance — locations associated with the founding stories of the Emirate, with important battles and events in the community's history, and with the lives of revered ancestors and leaders. These sites form an invisible but deeply felt map of meaning across the landscape that Biu people carry within them wherever they go.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-users"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 8 ── -->
+            <section class="chapter fade-up" id="ch8">
+                <div class="era-badge">Chapter 08 — People & Culture</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    People, Language & Culture
+                </h2>
+                <p>The Biu Emirate encompasses a rich tapestry of ethnic identities, the most prominent of which are the Pabir (also called Babur) and the Bura peoples. These groups share much in common — a plateau homeland, a predominantly Islamic faith, closely related linguistic traditions — while maintaining distinct cultural expressions that enrich the diversity of Biu life.</p>
+
+                <p>The Pabir language, belonging to the Chadic branch of the Afro-Asiatic language family, serves as the primary vernacular of the royal court and is widely spoken across the Emirate. The Bura language, similarly Chadic in origin, is spoken by a large proportion of the Emirate's population, particularly in rural communities. Hausa, as the dominant language of commerce and interethnic communication across northern Nigeria, is widely understood and used, and Arabic occupies an important place in religious and scholarly life.</p>
+
+                <h3>Music, Dance and Oral Tradition</h3>
+                <p>Cultural expression in Biu takes many forms, from the elaborate ceremonial displays of the Sallah Durbar — when the Emir receives the homage of his chiefs on horseback, in a tradition of breathtaking colour and pageantry — to the more intimate forms of music, storytelling, and poetry that animate everyday community life.</p>
+
+                <p>Griots — traditional praise-singers and oral historians — play a vital role in preserving and transmitting the collective memory of the community. Their performances at festivals, weddings, and state occasions serve not only as entertainment but as a living archive of the Emirate's history, genealogies, and values. In recent years, efforts have been made to record and document these oral traditions before they are lost — an enterprise that the Biu Forum platform seeks to support and amplify.</p>
+
+                <!-- Fact chips -->
+                <div class="flex flex-wrap gap-3 my-6">
+                    <span class="fact-chip"><i class="fas fa-language"></i> Pabir (Babur) language</span>
+                    <span class="fact-chip"><i class="fas fa-language"></i> Bura language</span>
+                    <span class="fact-chip"><i class="fas fa-language"></i> Hausa widely spoken</span>
+                    <span class="fact-chip"><i class="fas fa-horse"></i> Sallah Durbar tradition</span>
+                    <span class="fact-chip"><i class="fas fa-music"></i> Griot oral tradition</span>
+                </div>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-chart-line"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 9 ── -->
+            <section class="chapter fade-up" id="ch9">
+                <div class="era-badge">Chapter 09 — Economy</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Economy & Development Through the Ages
+                </h2>
+                <p>Agriculture has been the bedrock of the Biu economy across all periods of its history, and it remains so today. The fertile volcanic soils of the plateau support the cultivation of sorghum, millet, groundnuts, maize, and a variety of vegetables, while livestock — particularly cattle, goats, and sheep — represent significant household wealth for many families. The Tuesday market in Biu town is one of the largest and most important periodic markets in the sub-region, drawing traders and buyers from a wide area.</p>
+
+                <p>The modern economy of Biu is more diversified than at any point in its history. The town supports a substantial civil service workforce — teachers, health workers, local government employees — as well as a growing small business sector encompassing retail, hospitality, transport, and artisanal crafts. The presence of educational institutions, including a College of Education, contributes significantly to the local economy and positions Biu as an educational hub for the surrounding area.</p>
+
+                <h3>Infrastructure and Development Challenges</h3>
+                <p>Like many communities in northeastern Nigeria, Biu has faced significant development challenges in recent decades, particularly in the context of the security crisis that has affected the broader Lake Chad Basin region. The impact on trade, agriculture, and social mobility has been real and significant. Yet the resilience and adaptability that have always characterised the Biu people have been on full display in the community's capacity to endure, adapt, and continue building.</p>
+
+                <p>Infrastructure development remains a priority — improved roads connecting Biu to the state capital Maiduguri and to other parts of Nigeria, reliable electricity, expanded healthcare facilities, and enhanced educational provision are all areas where continued investment is needed and sought. The Biu community, both within Nigeria and in the diaspora, represents a resource of talent, ambition, and financial capacity that can be marshalled in support of these development goals.</p>
+            </section>
+
+            <div class="chapter-divider"><div class="line"></div><div class="icon"><i class="fas fa-star"></i></div><div class="line"></div></div>
+
+            <!-- ── CHAPTER 10 ── -->
+            <section class="chapter fade-up" id="ch10">
+                <div class="era-badge">Chapter 10 — The Future</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                    Biu Today & Into the Future
+                </h2>
+                <p>The Biu of today is a community in proud possession of a rich and complex history, navigating the challenges and opportunities of the twenty-first century with the same qualities that have always defined its people — faith, resilience, solidarity, and an abiding commitment to the community's collective welfare.</p>
+
+                <p>The establishment of the Biu Forum as the community's official digital platform represents a significant milestone in this ongoing story. By creating a space where Biu indigenes — whether in Biu town itself, in Maiduguri, Abuja, Lagos, or in the Nigerian diaspora across the world — can connect, share information, and engage with the life of their community, the Forum affirms that the ties of belonging and identity that have always held Biu together are not diminished by distance or the passage of time.</p>
+
+                <div class="pull-quote">
+                    <p>"We are not just preserving our past — we are building our future. And we are building it together, as we always have."</p>
+                    <cite>— Ahmad Abdullahi, Director, Biu Forum · 2026</cite>
+                </div>
+
+                <p>The challenges ahead — economic development, educational attainment, security, healthcare, and the preservation of cultural identity in a rapidly changing world — are real and significant. But so are the resources: a community of over a million people with deep roots, proud traditions, capable leadership, and an increasingly connected global network of sons and daughters who carry Biu within them wherever they go.</p>
+
+                <p>The history of Biu is not a closed book. It is being written, with every passing year, by the people of the Emirate themselves — in their acts of leadership and scholarship, in the children they educate, the businesses they build, the mosques they maintain, and the stories they tell. This platform is one small part of that ongoing story, and we invite every Biu citizen to be part of it.</p>
+
+                <!-- Final CTA card -->
+                <div class="mt-12 bg-gradient-to-br from-green-700 to-green-900 rounded-[2rem] p-10 text-white text-center">
+                    <h3 class="text-2xl font-black mb-4 text-white">Be Part of the Story</h3>
+                    <p class="text-green-100 mb-8 max-w-lg mx-auto">Join thousands of Biu citizens on the official platform. Stay connected to news, events, and the ongoing history of your community.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="emirs.html" class="bg-white text-green-700 px-10 py-4 rounded-2xl font-bold hover:bg-green-50 transition">Meet the Past Emirs</a>
+                        <a href="heritage.html" class="bg-white/20 border-2 border-white text-white px-10 py-4 rounded-2xl font-bold hover:bg-white/30 transition">Explore Heritage</a>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="assets/js/site.js"></script>
+<script>
+// ── Reading progress bar ──────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+    const doc  = document.documentElement;
+    const top  = doc.scrollTop || document.body.scrollTop;
+    const h    = doc.scrollHeight - doc.clientHeight;
+    document.getElementById('progress-bar').style.width = (top / h * 100) + '%';
+});
+
+// ── TOC scroll spy ────────────────────────────────────────────────────────────
+const chapters = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10'];
+const tocLinks  = document.querySelectorAll('.toc-link');
+
+const chObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            tocLinks.forEach(l => l.classList.remove('active'));
+            const idx = chapters.indexOf(entry.target.id);
+            if (idx > -1 && tocLinks[idx]) tocLinks[idx].classList.add('active');
+        }
+    });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+chapters.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) chObs.observe(el);
+});
+
+// ── Smooth scroll ─────────────────────────────────────────────────────────────
+function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Fade-up animations ────────────────────────────────────────────────────────
+const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+</script>
+</body>
+</html>

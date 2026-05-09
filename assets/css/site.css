@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+
+/* NAV */
+.glass-nav { background: rgba(255,255,255,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.mobile-nav-transition { transition: transform 0.5s cubic-bezier(0.77,0,0.175,1); }
+
+/* ANIMATIONS */
+.hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+.fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.badge-pulse { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+.scroll-anim { opacity:0; transform:translateY(30px); transition: all 0.8s ease-out; }
+.scroll-anim.visible { opacity:1; transform:translateY(0); }
+
+/* HERO */
+.hero-overlay { background: linear-gradient(to bottom, rgba(5,46,22,0.78), rgba(15,23,42,0.95)); }
+
+/* CATEGORY FILTER BUTTONS */
+.cat-btn { transition: all 0.3s ease; }
+.cat-btn.active { background:#16a34a; color:white; border-color:#16a34a; }
+
+/* TOAST (public pages) */
+.site-toast {
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #0f172a; color: white; padding: 14px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 14px; z-index: 9999;
+  opacity: 0; transition: all 0.4s ease; pointer-events: none;
+  white-space: nowrap;
+}
+.site-toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
+.site-toast.success { background: #16a34a; }
+.site-toast.error   { background: #dc2626; }
+
+/* FOOTER */
+footer.dark-footer { background: #0a1f0e; }

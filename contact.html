@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Biu Forum</title>
+    <meta name="description" content="Get in touch with the Biu Forum team — send a message, report an issue, or enquire about the platform.">
+    <meta property="og:title" content="Contact Us | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .form-input {
+            width: 100%; padding: 16px 20px; border-radius: 16px;
+            border: 2px solid #e2e8f0; font-size: 15px; font-weight: 500;
+            outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+            background: white; color: #0f172a; font-family: inherit;
+        }
+        .form-input:focus { border-color: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,0.08); }
+        .form-label { display: block; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+        .contact-card { transition: all 0.3s ease; }
+        .contact-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"   onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="emirs.html"   onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"    onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"  onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html" onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="py-28 px-6 lg:px-20 bg-gradient-to-b from-slate-900 to-green-950 text-white text-center">
+    <div class="max-w-3xl mx-auto fade-in">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest mb-8">
+            <i class="fas fa-envelope"></i> Get In Touch
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tighter">
+            Contact<br><span class="text-green-400">Biu Forum</span>
+        </h1>
+        <p class="text-xl text-slate-300 font-light leading-relaxed">
+            Have a question, a news tip, or a message for the team? We'd love to hear from you.
+        </p>
+    </div>
+</header>
+
+<!-- ═══ CONTACT CARDS ══════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <a href="tel:+2347067589333" class="contact-card bg-white rounded-[2rem] p-8 text-center border-2 border-slate-100 shadow-md block scroll-anim">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-700 text-2xl mx-auto mb-5">
+                <i class="fas fa-phone"></i>
+            </div>
+            <h4 class="font-black text-slate-900 mb-2">Call Us</h4>
+            <p class="text-green-700 font-bold text-sm mb-1">+234 706 758 9333</p>
+            <p class="text-slate-400 text-xs">Mon–Fri, 8am–6pm WAT</p>
+        </a>
+        <a href="mailto:info@biuforum.com" class="contact-card bg-white rounded-[2rem] p-8 text-center border-2 border-slate-100 shadow-md block scroll-anim">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-700 text-2xl mx-auto mb-5">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <h4 class="font-black text-slate-900 mb-2">Email Us</h4>
+            <p class="text-blue-700 font-bold text-sm mb-1">info@biuforum.com</p>
+            <p class="text-slate-400 text-xs">Response within 24 hours</p>
+        </a>
+        <a href="https://wa.me/2347067589333" target="_blank" class="contact-card bg-white rounded-[2rem] p-8 text-center border-2 border-slate-100 shadow-md block scroll-anim">
+            <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 text-2xl mx-auto mb-5">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h4 class="font-black text-slate-900 mb-2">WhatsApp</h4>
+            <p class="text-emerald-700 font-bold text-sm mb-1">+234 706 758 9333</p>
+            <p class="text-slate-400 text-xs">Chat directly with the team</p>
+        </a>
+        <div class="contact-card bg-white rounded-[2rem] p-8 text-center border-2 border-slate-100 shadow-md scroll-anim">
+            <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-700 text-2xl mx-auto mb-5">
+                <i class="fas fa-location-dot"></i>
+            </div>
+            <h4 class="font-black text-slate-900 mb-2">Our Location</h4>
+            <p class="text-amber-700 font-bold text-sm mb-1">Biu, Borno State</p>
+            <p class="text-slate-400 text-xs">Nigeria</p>
+        </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid lg:grid-cols-[1fr_360px] gap-16 items-start">
+
+        <!-- Contact form -->
+        <div class="bg-white rounded-[2rem] p-10 shadow-xl border border-slate-100 scroll-anim">
+            <h2 class="text-3xl font-black text-slate-900 mb-2">Send Us a Message</h2>
+            <p class="text-slate-500 mb-10">Use the form below for general enquiries, news tips, or feedback.</p>
+
+            <!-- Success message -->
+            <div id="contactSuccess" class="hidden bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center mb-8">
+                <i class="fas fa-check-circle text-green-600 text-4xl mb-4 block"></i>
+                <h3 class="text-xl font-black text-slate-900 mb-2">Message Sent!</h3>
+                <p class="text-slate-500">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+            </div>
+
+            <form id="contactForm" onsubmit="submitContact(event)">
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="form-label">Your Name *</label>
+                        <input type="text" id="cName" class="form-input" placeholder="Full name" required>
+                    </div>
+                    <div>
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" id="cEmail" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" id="cPhone" class="form-input" placeholder="+234 XXX XXX XXXX">
+                </div>
+                <div class="mb-6">
+                    <label class="form-label">Subject *</label>
+                    <select id="cSubject" class="form-input" required>
+                        <option value="">Select a subject</option>
+                        <option>General Enquiry</option>
+                        <option>News Submission / Tip</option>
+                        <option>Event Announcement</option>
+                        <option>Report an Error</option>
+                        <option>Dignitary Profile Submission</option>
+                        <option>Partnership / Collaboration</option>
+                        <option>Technical Support</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-8">
+                    <label class="form-label">Your Message *</label>
+                    <textarea id="cMessage" class="form-input" rows="6" placeholder="Write your message here…" style="resize:vertical;" required></textarea>
+                </div>
+                <button type="submit" id="cSubmitBtn"
+                        class="w-full bg-green-700 text-white py-5 rounded-2xl font-bold text-lg hover:bg-green-800 transition shadow-xl">
+                    <i class="fas fa-paper-plane mr-3"></i>Send Message
+                </button>
+            </form>
+        </div>
+
+        <!-- Right side info -->
+        <div class="space-y-8">
+
+            <!-- FAQ -->
+            <div class="bg-slate-50 rounded-[2rem] p-8 scroll-anim">
+                <h3 class="text-xl font-black text-slate-900 mb-6">Frequently Asked Questions</h3>
+                <div class="space-y-5">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 flex items-start gap-2"><i class="fas fa-circle-question text-green-600 mt-1 flex-shrink-0 text-sm"></i>How do I submit a news story?</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed pl-5">Use the contact form and select "News Submission / Tip" as the subject. Include as many details as possible.</p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-bold text-slate-900 mb-2 flex items-start gap-2"><i class="fas fa-circle-question text-green-600 mt-1 flex-shrink-0 text-sm"></i>How do I add a dignitary to the Emirs page?</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed pl-5">Select "Dignitary Profile Submission" and include the person's name, title, dates of service, biography, and if possible a photo.</p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-bold text-slate-900 mb-2 flex items-start gap-2"><i class="fas fa-circle-question text-green-600 mt-1 flex-shrink-0 text-sm"></i>Is Biu Forum free to use?</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed pl-5">Yes. The platform is completely free for all Biu citizens, now and always.</p>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-bold text-slate-900 mb-2 flex items-start gap-2"><i class="fas fa-circle-question text-green-600 mt-1 flex-shrink-0 text-sm"></i>Who manages this website?</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed pl-5">Biu Forum is managed by Zion Netcom Solutions Limited on behalf of the Biu community leadership.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech partner -->
+            <div class="bg-slate-900 rounded-[2rem] p-8 text-white scroll-anim">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <div class="font-black text-white text-sm">Technology Partner</div>
+                        <div class="text-slate-400 text-xs">Website design & management</div>
+                    </div>
+                </div>
+                <h4 class="font-black text-xl text-white mb-3">Zion Netcom Solutions Limited</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">For technical enquiries, hosting questions, or to commission new features for the Biu Forum platform.</p>
+                <div class="space-y-3">
+                    <a href="tel:+2347067589333" class="flex items-center gap-3 text-green-400 hover:text-green-300 transition text-sm font-medium">
+                        <i class="fas fa-phone w-4"></i>+234 706 758 9333
+                    </a>
+                    <a href="mailto:info@biuforum.com" class="flex items-center gap-3 text-green-400 hover:text-green-300 transition text-sm font-medium">
+                        <i class="fas fa-envelope w-4"></i>info@biuforum.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="assets/js/site.js"></script>
+<script>
+async function submitContact(e) {
+    e.preventDefault();
+    const btn = document.getElementById('cSubmitBtn');
+    btn.disabled  = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Sending…';
+    await new Promise(r => setTimeout(r, 1200));
+    document.getElementById('contactForm').style.display    = 'none';
+    document.getElementById('contactSuccess').classList.remove('hidden');
+    showSiteToast('Message sent! We will respond within 24 hours.', 'success');
+    document.getElementById('contactSuccess').scrollIntoView({ behavior:'smooth' });
+}
+</script>
+</body>
+</html>

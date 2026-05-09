@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Biu Forum</title>
+    <meta name="description" content="Learn about the Biu Forum — the official digital platform of the Biu Emirate, connecting citizens across Nigeria and the diaspora.">
+    <meta property="og:title" content="About Us | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .team-card { transition: all 0.3s ease; }
+        .team-card:hover { transform: translateY(-8px); }
+        .value-card { transition: all 0.3s ease; }
+        .value-card:hover { border-color: #16a34a; box-shadow: 0 20px 40px rgba(22,163,74,0.08); }
+        .stat-counter { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="history.html"  onclick="toggleMenu()" class="hover:text-white transition">History of Biu</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative min-h-[60vh] flex items-center px-6 lg:px-20 py-24 overflow-hidden">
+    <img src="assets/images/about.jpg" onerror="this.style.display='none'"
+         class="absolute inset-0 w-full h-full object-cover" alt="About Biu Forum">
+    <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(5,46,22,0.95),rgba(15,23,42,0.85));"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center fade-in">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest mb-8">
+            <i class="fas fa-info-circle"></i> Who We Are
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tighter">
+            About<br><span class="text-green-400">Biu Forum</span>
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
+            The official digital home of the Biu Emirate — built to connect, inform, and empower every citizen of our great community.
+        </p>
+    </div>
+</header>
+
+<!-- ═══ MISSION ════════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+        <div class="scroll-anim">
+            <h2 class="text-green-700 font-extrabold text-sm uppercase tracking-widest mb-6 border-l-4 border-green-600 pl-4">Our Mission</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
+                Uniting Biu Citizens Across Every Border
+            </h3>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                Biu Forum is the official community platform of the Biu Emirate — a digital space purpose-built to keep every indigene connected to the news, events, history, and leadership of their homeland, whether they are in Biu, Maiduguri, Lagos, Abuja, or anywhere in the world.
+            </p>
+            <p class="text-slate-600 text-lg leading-relaxed mb-10">
+                We believe that a community's strength lies in the quality of its connections. When Biu citizens are informed, engaged, and united — they are unstoppable.
+            </p>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-green-50 p-6 rounded-2xl">
+                    <div class="text-3xl font-black text-green-700 mb-1 stat-counter">2026</div>
+                    <div class="text-sm font-bold text-slate-500">Year Founded</div>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl">
+                    <div class="text-3xl font-black text-slate-900 mb-1 stat-counter">1M+</div>
+                    <div class="text-sm font-bold text-slate-500">Citizens We Serve</div>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-2xl">
+                    <div class="text-3xl font-black text-amber-700 mb-1 stat-counter">4</div>
+                    <div class="text-sm font-bold text-slate-500">LGAs Represented</div>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl">
+                    <div class="text-3xl font-black text-blue-700 mb-1 stat-counter">500+</div>
+                    <div class="text-sm font-bold text-slate-500">Years of Heritage</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-anim relative">
+            <img src="assets/images/heritage-hero.jpg"
+                 onerror="this.outerHTML='<div class=\'w-full h-96 bg-gradient-to-br from-green-700 to-green-900 rounded-[2rem] flex items-center justify-center text-white/20 text-8xl\'><i class=\'fas fa-users\'></i></div>'"
+                 class="w-full rounded-[2rem] shadow-2xl object-cover h-96" alt="Biu Community">
+            <div class="absolute -bottom-8 -left-8 bg-green-700 p-8 rounded-[2rem] text-white shadow-2xl hidden md:block">
+                <p class="text-4xl font-black leading-none mb-1">Free</p>
+                <p class="text-xs font-bold uppercase tracking-widest opacity-70">Always & Forever</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ VALUES ══════════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">What We Stand For</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Our Core Values</h3>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6"><i class="fas fa-shield"></i></div>
+                <h4 class="text-xl font-black mb-4">Truth & Credibility</h4>
+                <p class="text-slate-600 leading-relaxed">Every piece of content on this platform is verified before publication. We will never publish rumour, propaganda, or unverified claims in the name of the Biu community.</p>
+            </div>
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-700 text-2xl mb-6"><i class="fas fa-users"></i></div>
+                <h4 class="text-xl font-black mb-4">Inclusivity</h4>
+                <p class="text-slate-600 leading-relaxed">Biu Forum serves every citizen — regardless of gender, age, profession, or location. The platform belongs to the entire community, not any single faction or interest.</p>
+            </div>
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-700 text-2xl mb-6"><i class="fas fa-monument"></i></div>
+                <h4 class="text-xl font-black mb-4">Heritage Preservation</h4>
+                <p class="text-slate-600 leading-relaxed">We are committed to documenting, preserving, and celebrating the history, culture, and traditions of the Biu Emirate for this and future generations.</p>
+            </div>
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-700 text-2xl mb-6"><i class="fas fa-bolt"></i></div>
+                <h4 class="text-xl font-black mb-4">Community Empowerment</h4>
+                <p class="text-slate-600 leading-relaxed">Information is power. By ensuring every Biu citizen has access to accurate, timely news and resources, we empower individuals to make better decisions for themselves and their families.</p>
+            </div>
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-700 text-2xl mb-6"><i class="fas fa-handshake"></i></div>
+                <h4 class="text-xl font-black mb-4">Unity Across Distance</h4>
+                <p class="text-slate-600 leading-relaxed">The diaspora is as much a part of Biu as the plateau itself. This platform bridges every mile that separates our people, making every citizen feel present in the life of their community.</p>
+            </div>
+            <div class="value-card bg-white p-10 rounded-[2rem] border-2 border-slate-100 transition-all scroll-anim">
+                <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6"><i class="fas fa-seedling"></i></div>
+                <h4 class="text-xl font-black mb-4">Sustainable Development</h4>
+                <p class="text-slate-600 leading-relaxed">We actively promote and publicise development initiatives, scholarships, and opportunities that improve the lives of Biu citizens now and build a better future for the next generation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ WHAT WE OFFER ══════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="text-center mb-20">
+        <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Platform Features</h2>
+        <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">What Biu Forum Offers</h3>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex gap-6 p-8 bg-slate-50 rounded-[2rem] scroll-anim">
+            <div class="w-14 h-14 bg-green-700 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0"><i class="fas fa-newspaper"></i></div>
+            <div>
+                <h4 class="text-xl font-black mb-2">Community News</h4>
+                <p class="text-slate-600 leading-relaxed">Verified news, announcements, and updates from across the Biu Emirate — published directly by our editorial team and updated in real time.</p>
+            </div>
+        </div>
+        <div class="flex gap-6 p-8 bg-slate-50 rounded-[2rem] scroll-anim">
+            <div class="w-14 h-14 bg-amber-600 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0"><i class="fas fa-calendar-days"></i></div>
+            <div>
+                <h4 class="text-xl font-black mb-2">Events Calendar</h4>
+                <p class="text-slate-600 leading-relaxed">Never miss an important community gathering, celebration, or official event again. Register directly through the platform.</p>
+            </div>
+        </div>
+        <div class="flex gap-6 p-8 bg-slate-50 rounded-[2rem] scroll-anim">
+            <div class="w-14 h-14 bg-blue-700 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0"><i class="fas fa-images"></i></div>
+            <div>
+                <h4 class="text-xl font-black mb-2">Photo Gallery</h4>
+                <p class="text-slate-600 leading-relaxed">A growing archive of community moments — from cultural celebrations and leadership events to development projects and diaspora gatherings.</p>
+            </div>
+        </div>
+        <div class="flex gap-6 p-8 bg-slate-50 rounded-[2rem] scroll-anim">
+            <div class="w-14 h-14 bg-purple-700 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0"><i class="fas fa-scroll"></i></div>
+            <div>
+                <h4 class="text-xl font-black mb-2">History & Heritage</h4>
+                <p class="text-slate-600 leading-relaxed">An authoritative, well-sourced record of the history, culture, and achievements of the Biu Emirate — available to every citizen and researcher worldwide.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ LEADERSHIP ═════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Platform Leadership</h2>
+        <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-6">The Team Behind Biu Forum</h3>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-20">Built with dedication to the Biu community, managed with professional excellence.</p>
+        <div class="grid md:grid-cols-2 gap-10 max-w-3xl mx-auto">
+            <div class="team-card bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 scroll-anim">
+                <div class="h-48 bg-gradient-to-br from-green-700 to-green-900 flex items-center justify-center text-white/20 text-7xl">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="p-8 text-left">
+                    <h4 class="text-xl font-black text-slate-900 mb-1">Ahmad Abdullahi</h4>
+                    <p class="text-green-700 font-bold text-sm mb-4">Director, Biu Forum</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Visionary behind the Biu Forum platform, dedicated to connecting Biu citizens globally and preserving the Emirate's heritage for future generations.</p>
+                </div>
+            </div>
+            <div class="team-card bg-white rounded-[2rem] overflow-hidden shadow-xl border border-slate-100 scroll-anim">
+                <div class="h-48 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-white/20 text-7xl">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="p-8 text-left">
+                    <h4 class="text-xl font-black text-slate-900 mb-1">Zion Netcom Solutions</h4>
+                    <p class="text-green-700 font-bold text-sm mb-4">Technology Partner</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Responsible for the design, development, hosting, and ongoing management of the Biu Forum digital platform.</p>
+                    <a href="tel:+2347067589333" class="text-green-700 font-bold text-sm mt-2 block">+234 706 758 9333</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ══════════════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-gradient-to-r from-green-700 to-green-800">
+    <div class="max-w-4xl mx-auto text-center text-white">
+        <h2 class="text-4xl lg:text-5xl font-black mb-6">Join the Biu Community</h2>
+        <p class="text-xl text-green-100 mb-10 max-w-2xl mx-auto">Subscribe to updates, register for events, and be part of the platform that is bringing Biu together.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="news.html"   class="bg-white text-green-700 px-12 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition shadow-lg">Read Our News</a>
+            <a href="contact.html" class="bg-white/20 border-2 border-white text-white px-12 py-4 rounded-2xl font-bold text-lg hover:bg-white/30 transition">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

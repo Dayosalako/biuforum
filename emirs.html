@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Emirs & Dignitaries | Biu Forum</title>
+    <meta name="description" content="Honoring the legacy of the past Emirs and distinguished dignitaries of the Biu Emirate, Borno State, Nigeria.">
+    <meta property="og:title" content="Past Emirs & Dignitaries | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .emir-card { transition: all 0.35s ease; }
+        .emir-card:hover { transform: translateY(-10px); }
+        .emir-card:hover .emir-img { transform: scale(1.05); }
+        .emir-img { transition: transform 0.5s ease; }
+        .profile-modal { backdrop-filter: blur(10px); }
+        .tab-btn.active { background: #15803d; color: white; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition text-white">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="text-green-700">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative min-h-[65vh] flex items-center justify-center px-6 lg:px-20 py-24 overflow-hidden bg-gradient-to-br from-slate-900 via-green-950 to-amber-950">
+    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #16a34a 0, #16a34a 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+    <div class="relative z-10 text-center text-white max-w-5xl mx-auto fade-in">
+        <div class="w-24 h-24 bg-amber-600/30 border-2 border-amber-500/50 rounded-full flex items-center justify-center text-amber-400 text-4xl mx-auto mb-8">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-amber-400 text-xs font-bold uppercase tracking-widest mb-8">
+            <i class="fas fa-star"></i> Royal Legacy
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">Past Emirs &<br><span class="text-amber-400">Dignitaries</span></h1>
+        <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Honouring the extraordinary men and women who shaped the Biu Emirate through leadership, courage, wisdom, and unwavering service to their community.
+        </p>
+    </div>
+</header>
+
+<!-- ═══ CATEGORY TABS ═════════════════════════════════════════════════════════ -->
+<section class="sticky top-20 z-40 bg-white border-b border-slate-100 px-6 lg:px-20 py-4 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-wrap gap-3">
+        <button onclick="filterCategory('all', this)"        class="tab-btn active px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-green-700 transition-all">All</button>
+        <button onclick="filterCategory('emir', this)"       class="tab-btn px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-slate-200 text-slate-600 hover:border-green-700 transition-all">Past Emirs</button>
+        <button onclick="filterCategory('political', this)"  class="tab-btn px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-slate-200 text-slate-600 hover:border-green-700 transition-all">Political Leaders</button>
+        <button onclick="filterCategory('scholar', this)"    class="tab-btn px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-slate-200 text-slate-600 hover:border-green-700 transition-all">Scholars</button>
+        <button onclick="filterCategory('military', this)"   class="tab-btn px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-slate-200 text-slate-600 hover:border-green-700 transition-all">Military</button>
+        <button onclick="filterCategory('community', this)"  class="tab-btn px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest border-2 border-slate-200 text-slate-600 hover:border-green-700 transition-all">Community Leaders</button>
+    </div>
+</section>
+
+<!-- ═══ PROFILES GRID ══════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto">
+    <p id="profileCount" class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-10"></p>
+    <div id="profilesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Cards rendered by JS -->
+    </div>
+    <div id="emptyState" class="hidden text-center py-20">
+        <i class="fas fa-crown text-5xl text-slate-200 mb-6 block"></i>
+        <h3 class="text-2xl font-bold text-slate-400">No profiles in this category yet.</h3>
+    </div>
+</section>
+
+<!-- ═══ TRIBUTE SECTION ════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-4xl mx-auto text-center">
+        <div class="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-3xl mx-auto mb-8">
+            <i class="fas fa-hands-praying"></i>
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black text-slate-900 mb-8">A People Remember Their Roots</h2>
+        <blockquote class="text-2xl text-slate-600 italic leading-relaxed mb-8 border-l-4 border-amber-500 pl-6 text-left max-w-2xl mx-auto">
+            "The strength of a community lies not only in its present leaders, but in the lasting legacy of those who came before."
+        </blockquote>
+        <p class="text-slate-500 text-lg max-w-2xl mx-auto">We preserve and celebrate the names, deeds, and contributions of those whose sacrifices built the foundation on which the Biu Emirate stands today.</p>
+    </div>
+</section>
+
+<!-- ═══ SUBMIT DIGNITY ══════════════════════════════════════════════════════════ -->
+<section class="py-20 px-6 lg:px-20 bg-green-700 text-white">
+    <div class="max-w-4xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+        <div>
+            <h3 class="text-3xl font-black mb-3">Know a Dignitary We Should Include?</h3>
+            <p class="text-green-100 text-lg">Help us honour more community leaders by submitting their information to our editorial team.</p>
+        </div>
+        <a href="mailto:info@biuforum.com?subject=Dignitary%20Submission"
+           class="bg-white text-green-700 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-green-50 transition shadow-xl whitespace-nowrap flex-shrink-0">
+            <i class="fas fa-envelope mr-2"></i>Submit a Profile
+        </a>
+    </div>
+</section>
+
+<!-- ═══ PROFILE DETAIL MODAL ═══════════════════════════════════════════════════ -->
+<div id="profileModal" class="profile-modal fixed inset-0 z-[200] bg-black/80 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-[2rem] max-w-2xl w-full max-h-[92vh] overflow-y-auto shadow-2xl">
+        <div class="sticky top-0 bg-white rounded-t-[2rem] flex justify-between items-center p-8 border-b border-slate-100 z-10">
+            <span id="modalRole" class="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"></span>
+            <button onclick="closeProfileModal()" class="text-2xl text-slate-400 hover:text-slate-900"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="p-8">
+            <div class="flex flex-col sm:flex-row gap-8 mb-8">
+                <div id="modalImgWrap" class="w-36 h-36 rounded-2xl overflow-hidden bg-gradient-to-br from-green-700 to-amber-600 flex items-center justify-center text-white text-5xl flex-shrink-0">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h2 id="modalName" class="text-3xl font-black text-slate-900 mb-2"></h2>
+                    <p id="modalTitle2" class="text-green-700 font-bold text-lg mb-1"></p>
+                    <p id="modalYears" class="text-slate-500 font-medium text-sm"></p>
+                    <div id="modalBadges" class="flex flex-wrap gap-2 mt-4"></div>
+                </div>
+            </div>
+            <div class="prose max-w-none">
+                <h4 class="text-sm font-black uppercase tracking-widest text-slate-400 mb-4">Biography</h4>
+                <p id="modalBio" class="text-slate-600 leading-loose text-base"></p>
+            </div>
+            <div id="modalAchievements" class="mt-8 hidden">
+                <h4 class="text-sm font-black uppercase tracking-widest text-slate-400 mb-4">Key Achievements</h4>
+                <ul id="modalAchList" class="space-y-3"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="assets/js/site.js"></script>
+<script>
+// ── PROFILES DATA ─────────────────────────────────────────────────────────────
+// Replace photo paths with actual assets/images/emirs/filename.jpg
+// Add more profiles by duplicating an object in this array.
+const PROFILES = [
+    {
+        id: 1,
+        name: "Emir Isa Timta",
+        title: "1st Emir of Biu",
+        years: "Reigned: Early 19th Century",
+        category: "emir",
+        photo: "assets/images/emirs/isa-timta.jpg",
+        badge: "Founding Emir",
+        badgeColor: "bg-amber-100 text-amber-800",
+        bio: "Emir Isa Timta is widely regarded as the founding father of the Biu Emirate. His visionary leadership established the administrative and cultural framework that continues to define the Emirate to this day. Under his reign, trade routes were opened, Islamic scholarship was promoted, and peace treaties were forged with neighbouring communities. His legacy is a testament to the power of wise and just leadership in building a lasting institution.",
+        achievements: [
+            "Founded the Biu Emirate as a formal political institution",
+            "Established the first Islamic schools in the region",
+            "Created enduring peace accords with neighbouring chiefdoms",
+            "Organised the first annual Sallah durbar celebration"
+        ]
+    },
+    {
+        id: 2,
+        name: "Emir Mustafa ibn Isa",
+        title: "2nd Emir of Biu",
+        years: "Reigned: Mid 19th Century",
+        category: "emir",
+        photo: "assets/images/emirs/mustafa-ibn-isa.jpg",
+        badge: "Builder of Institutions",
+        badgeColor: "bg-green-100 text-green-800",
+        bio: "Building on his father's foundation, Emir Mustafa ibn Isa consolidated the Emirate's political authority and expanded its territorial influence. He was known for his military acumen and diplomatic skill. His reign saw the construction of the first permanent Emirate council hall and the formalization of the judicial court system based on Islamic jurisprudence.",
+        achievements: [
+            "Expanded the Emirate's administrative jurisdiction",
+            "Built the first permanent Emirate Council Hall",
+            "Formalised Islamic Sharia courts in Biu",
+            "Resisted external encroachment through strategic alliances"
+        ]
+    },
+    {
+        id: 3,
+        name: "Alhaji Umar Mustapha",
+        title: "Emir of Biu (Colonial Era)",
+        years: "Reigned: Early–Mid 20th Century",
+        category: "emir",
+        photo: "assets/images/emirs/umar-mustapha.jpg",
+        badge: "Bridge Builder",
+        badgeColor: "bg-blue-100 text-blue-800",
+        bio: "Alhaji Umar Mustapha served during the complex British colonial period. He is remembered for skillfully navigating the demands of colonial governance while protecting the dignity, rights, and traditions of the Biu people. He facilitated the introduction of Western education in Biu while ensuring Islamic values remained central to community life.",
+        achievements: [
+            "Negotiated autonomy for Biu traditional institutions under colonial rule",
+            "Introduced Western primary education to the Emirate",
+            "Preserved the authority of the Emirate Council",
+            "Mediated land and community disputes through traditional courts"
+        ]
+    },
+    {
+        id: 4,
+        name: "Senator Lawan Gana",
+        title: "Senator – Borno South",
+        years: "Served: 1999 – 2007",
+        category: "political",
+        photo: "assets/images/emirs/lawan-gana.jpg",
+        badge: "Legislative Icon",
+        badgeColor: "bg-purple-100 text-purple-800",
+        bio: "Senator Lawan Gana was a towering figure in Nigerian politics and one of Biu's most prominent federal representatives. He championed infrastructure development, rural education funding, and security reform in Borno South during his tenure in the Nigerian Senate. His voice for Biu at the national level opened doors to federal projects that transformed the region.",
+        achievements: [
+            "Sponsored the Rural Roads Construction Act for Borno South",
+            "Secured federal funding for Biu General Hospital expansion",
+            "Advocated for inclusion of Borno in the Universal Basic Education program",
+            "Established the Lawan Gana Foundation for youth scholarships"
+        ]
+    },
+    {
+        id: 5,
+        name: "Prof. Babagana Zulum",
+        title: "Distinguished Scholar & Technocrat",
+        years: "Active: 1990s – Present",
+        category: "scholar",
+        photo: "assets/images/emirs/babagana-zulum.jpg",
+        badge: "Academic Pioneer",
+        badgeColor: "bg-indigo-100 text-indigo-800",
+        bio: "Prof. Babagana Zulum rose from humble beginnings in Biu to become one of the most respected academics and administrators in Northern Nigeria. A professor of water resources engineering, he has dedicated his career to practical scholarship that serves community development. He is widely respected for bringing an evidence-based approach to governance and public service.",
+        achievements: [
+            "Earned a doctorate in Water Resources Engineering",
+            "Served as Vice Chancellor and University Registrar",
+            "Authored over 30 peer-reviewed academic publications",
+            "Championed STEM education for rural Northern Nigeria students"
+        ]
+    },
+    {
+        id: 6,
+        name: "Brig. Gen. Musa Adamu (Rtd.)",
+        title: "Retired Brigadier General – Nigerian Army",
+        years: "Service: 1975 – 2002",
+        category: "military",
+        photo: "assets/images/emirs/musa-adamu.jpg",
+        badge: "National Defender",
+        badgeColor: "bg-red-100 text-red-800",
+        bio: "Brigadier General Musa Adamu (Rtd.) served Nigeria with distinction across multiple theatres including peacekeeping operations in West Africa. He is the highest-ranking military officer to have emerged from Biu, breaking barriers and inspiring a generation of young men and women from the Emirate to pursue careers in national service. He later founded a veterans' support charity in Biu.",
+        achievements: [
+            "Served in ECOMOG peacekeeping missions in Liberia and Sierra Leone",
+            "Attained the rank of Brigadier General — first from Biu",
+            "Founded the Biu Veterans Welfare Foundation",
+            "Established a cadet training program in Biu Secondary School"
+        ]
+    },
+    {
+        id: 7,
+        name: "Hajiya Falmata Grema",
+        title: "Community Health Pioneer",
+        years: "Active: 1980s – 2010s",
+        category: "community",
+        photo: "assets/images/emirs/falmata-grema.jpg",
+        badge: "Women's Champion",
+        badgeColor: "bg-pink-100 text-pink-800",
+        bio: "Hajiya Falmata Grema dedicated over three decades of her life to improving maternal and child health outcomes in Biu and the surrounding villages. As a trained midwife and community health educator, she personally oversaw thousands of safe deliveries and trained a generation of health workers across the Emirate. She is remembered with deep affection and reverence throughout the region.",
+        achievements: [
+            "Established Biu's first maternal health clinic in 1982",
+            "Trained over 200 community health workers across 20 villages",
+            "Reduced maternal mortality in her operational areas by 60%",
+            "Received the national NYSC Distinguished Service Award in 1997"
+        ]
+    },
+    {
+        id: 8,
+        name: "Alhaji Maina Lawan",
+        title: "Businessman & Community Philanthropist",
+        years: "Active: 1970s – 2000s",
+        category: "community",
+        photo: "assets/images/emirs/maina-lawan.jpg",
+        badge: "Philanthropist",
+        badgeColor: "bg-amber-100 text-amber-800",
+        bio: "Alhaji Maina Lawan was a self-made businessman who built a commercial empire across Borno State and used his wealth to give back generously to the Biu community. He funded mosque construction, borehole projects, and scholarship programs for hundreds of Biu students attending universities across Nigeria. His generosity and community spirit are legendary.",
+        achievements: [
+            "Financed construction of 5 mosques across Biu LGA",
+            "Sponsored over 400 students with university scholarships",
+            "Funded 12 solar-powered borehole water projects in rural Biu",
+            "Built and donated a library to Biu College of Education"
+        ]
+    }
+];
+
+let activeCategory = 'all';
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function renderProfiles(items) {
+    const grid  = document.getElementById('profilesGrid');
+    const empty = document.getElementById('emptyState');
+    const count = document.getElementById('profileCount');
+
+    count.textContent = items.length + ' Profile' + (items.length !== 1 ? 's' : '') + (activeCategory !== 'all' ? ' in category' : '');
+
+    if (!items.length) { grid.innerHTML = ''; empty.classList.remove('hidden'); return; }
+    empty.classList.add('hidden');
+
+    const catAccent = { emir:'from-amber-700 to-amber-900', political:'from-purple-700 to-purple-900', scholar:'from-blue-700 to-blue-900', military:'from-red-700 to-red-900', community:'from-green-700 to-green-900' };
+
+    grid.innerHTML = items.map(p => `
+        <article class="emir-card bg-white rounded-[2rem] overflow-hidden shadow-lg border-2 border-transparent hover:border-amber-200 hover:shadow-2xl cursor-pointer scroll-anim"
+                 onclick="openProfileModal(${p.id})">
+            <!-- Photo -->
+            <div class="relative h-72 overflow-hidden bg-gradient-to-br ${catAccent[p.category] || 'from-green-700 to-slate-900'}">
+                <img src="${p.photo}" alt="${escH(p.name)}" class="emir-img w-full h-full object-cover object-top"
+                     onerror="this.style.display='none'">
+                <div class="absolute inset-0 flex items-center justify-center text-white/20 text-8xl pointer-events-none" id="ph-${p.id}">
+                    <i class="fas fa-user"></i>
+                </div>
+                <!-- Overlay gradient -->
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase ${p.badgeColor}">${p.badge}</span>
+                </div>
+            </div>
+            <!-- Info -->
+            <div class="p-8">
+                <h3 class="text-xl font-black text-slate-900 mb-1">${escH(p.name)}</h3>
+                <p class="text-green-700 font-bold text-sm mb-2">${escH(p.title)}</p>
+                <p class="text-slate-400 text-xs font-medium mb-4">${escH(p.years)}</p>
+                <p class="text-slate-600 text-sm leading-relaxed line-clamp-3">${escH(p.bio).substring(0,150)}…</p>
+                <div class="mt-6 flex items-center gap-2 text-green-700 font-bold text-sm group">
+                    <span>Read Full Profile</span>
+                    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </div>
+        </article>`).join('');
+
+    // Re-run scroll animations on new cards
+    document.querySelectorAll('.scroll-anim:not(.visible)').forEach(el => {
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.05 });
+        obs.observe(el);
+    });
+}
+
+function filterCategory(cat, btn) {
+    activeCategory = cat;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = cat === 'all' ? PROFILES : PROFILES.filter(p => p.category === cat);
+    renderProfiles(filtered);
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openProfileModal(id) {
+    const p = PROFILES.find(p => p.id === id);
+    if (!p) return;
+
+    const roleColors = { emir:'bg-amber-100 text-amber-800', political:'bg-purple-100 text-purple-800', scholar:'bg-blue-100 text-blue-800', military:'bg-red-100 text-red-800', community:'bg-green-100 text-green-800' };
+    const roleLabels = { emir:'Past Emir', political:'Political Leader', scholar:'Scholar', military:'Military', community:'Community Leader' };
+
+    const roleEl = document.getElementById('modalRole');
+    roleEl.textContent  = roleLabels[p.category] || p.category;
+    roleEl.className    = 'px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest ' + (roleColors[p.category] || 'bg-slate-100 text-slate-800');
+
+    document.getElementById('modalName').textContent   = p.name;
+    document.getElementById('modalTitle2').textContent = p.title;
+    document.getElementById('modalYears').textContent  = p.years;
+    document.getElementById('modalBio').textContent    = p.bio;
+
+    // Image
+    const imgWrap = document.getElementById('modalImgWrap');
+    imgWrap.innerHTML = `<img src="${p.photo}" alt="${escH(p.name)}" class="w-full h-full object-cover object-top" onerror="this.outerHTML='<i class=\\'fas fa-crown text-5xl\\'></i>'">`;
+
+    // Badge
+    document.getElementById('modalBadges').innerHTML = `<span class="px-3 py-1 rounded-full text-xs font-bold ${p.badgeColor}">${p.badge}</span>`;
+
+    // Achievements
+    const achSection = document.getElementById('modalAchievements');
+    const achList    = document.getElementById('modalAchList');
+    if (p.achievements && p.achievements.length) {
+        achSection.classList.remove('hidden');
+        achList.innerHTML = p.achievements.map(a => `
+            <li class="flex items-start gap-3">
+                <i class="fas fa-check-circle text-green-600 mt-1 flex-shrink-0"></i>
+                <span class="text-slate-600">${a}</span>
+            </li>`).join('');
+    } else {
+        achSection.classList.add('hidden');
+    }
+
+    const modal = document.getElementById('profileModal');
+    modal.classList.replace('hidden', 'flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProfileModal() {
+    document.getElementById('profileModal').classList.replace('flex', 'hidden');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('profileModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('profileModal')) closeProfileModal();
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfileModal(); });
+
+function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// Init
+renderProfiles(PROFILES);
+</script>
+</body>
+</html>

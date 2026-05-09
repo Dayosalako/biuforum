@@ -1,0 +1,45 @@
+# Biu Forum — Netlify Configuration
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/admin"
+  to   = "/admin/dashboard.html"
+  status = 200
+
+[[redirects]]
+  from = "/news"
+  to   = "/news.html"
+  status = 200
+
+[[redirects]]
+  from = "/events"
+  to   = "/events.html"
+  status = 200
+
+[[redirects]]
+  from = "/gallery"
+  to   = "/gallery.html"
+  status = 200
+
+[[redirects]]
+  from = "/heritage"
+  to   = "/heritage.html"
+  status = 200
+
+[[redirects]]
+  from = "/emirs"
+  to   = "/emirs.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

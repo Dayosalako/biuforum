@@ -1,0 +1,113 @@
+╔══════════════════════════════════════════════════════════════╗
+║   BIU FORUM — MAILCHIMP + FIRESTORE NEWSLETTER SETUP         ║
+╚══════════════════════════════════════════════════════════════╝
+
+HOW EMAIL COLLECTION NOW WORKS
+───────────────────────────────
+Every subscribe/registry form across the site now does TWO things:
+
+  1. FIRESTORE — saves subscriber to "subscribers" collection
+     → View in Firebase Console → Firestore → subscribers
+     → Full details: name, email, LGA, location, occupation, etc.
+     → Admin dashboard → Subscribers tab → Export CSV anytime
+
+  2. MAILCHIMP — adds email to your Mailchimp mailing list
+     → From Mailchimp you can send bulk newsletters/announcements
+     → Free plan: 500 contacts, 1,000 emails/month
+
+FORMS CONNECTED
+───────────────
+  ✓ index.html         → Registry popup modal
+  ✓ news.html          → Subscribe form
+  ✓ events.html        → Subscribe form
+  ✓ join-registry.html → Full registry form (saves all details)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — CREATE YOUR FREE MAILCHIMP ACCOUNT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://mailchimp.com
+2. Click "Sign Up Free"
+3. Enter your email, username, password → Create Account
+4. Verify your email address
+5. Complete the setup wizard (organisation name: "Biu Forum")
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — GET YOUR MAILCHIMP FORM URL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. In Mailchimp → click "Audience" in the left menu
+2. Click "Signup forms"
+3. Click "Embedded forms"
+4. Click "Generate code"
+5. Look for the <form> tag in the generated code
+6. Copy the URL inside action="..." — it looks like:
+
+   https://yourdomain.us1.list-manage.com/subscribe/post?u=XXXX&id=XXXX
+
+   That full URL is your MAILCHIMP_URL.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — PASTE THE URL INTO YOUR WEBSITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Open the file: assets/js/site.js
+2. Find this line near the top (line ~116):
+
+   const MAILCHIMP_URL = 'YOUR_MAILCHIMP_FORM_ACTION_URL_HERE';
+
+3. Replace YOUR_MAILCHIMP_FORM_ACTION_URL_HERE with your real URL:
+
+   const MAILCHIMP_URL = 'https://yourdomain.us1.list-manage.com/subscribe/post?u=XXXX&id=XXXX';
+
+4. Save the file
+5. Re-upload to Netlify
+
+That's it! Mailchimp is now connected.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — UPDATE FIRESTORE RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The updated Firestore rules are in FIREBASE_RULES.txt
+Paste them in Firebase Console → Firestore → Rules → Publish
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOW TO VIEW YOUR SUBSCRIBERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+METHOD 1 — Admin Dashboard (easiest):
+  → Go to yoursite.netlify.app/admin
+  → Log in with your Firebase credentials
+  → Click "Subscribers" in the left sidebar
+  → See the live list with names, emails, LGAs, locations
+  → Click "Export CSV" to download the full list as a spreadsheet
+
+METHOD 2 — Firebase Console:
+  → console.firebase.google.com → biu-forum
+  → Firestore Database → subscribers collection
+  → Click any document to see full details
+
+METHOD 3 — Mailchimp:
+  → mailchimp.com → Audience → Contacts
+  → See all email subscribers, send bulk emails
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SENDING A NEWSLETTER TO YOUR SUBSCRIBERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to mailchimp.com → Campaigns → Create Campaign
+2. Choose "Email"
+3. Choose your audience (Biu Forum list)
+4. Design your email using their templates
+5. Click Send — all subscribers receive it instantly
+
+Free plan allows 1,000 sends per month.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Zion Netcom Solutions Limited
+  Phone:  +234 706 758 9333
+  Email:  info@biuforum.com
+  © 2026 Biu Forum. All rights reserved.

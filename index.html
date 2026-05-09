@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biu Forum | Official Community Platform</title>
+    <meta name="description" content="The official digital platform of the Biu Emirate — connecting indigenes through news, events, culture, and collective development.">
+    <meta property="og:title" content="Biu Forum | Official Community Platform">
+    <meta property="og:description" content="Empowering the indigenes of Biu Emirate through information, connectivity, and collective development.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .badge-pulse { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+        .news-card-dark { background: rgba(15,23,42,0.04); border: 1.5px solid rgba(15,23,42,0.08); }
+        .news-card-dark:hover { border-color: #16a34a; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition text-white">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="text-green-700">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800" aria-label="Open menu">
+            <i class="fas fa-bars-staggered"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative min-h-[88vh] flex items-center px-6 lg:px-20 py-20 overflow-hidden">
+    <!-- Replace the src below with your own hero image path e.g. assets/images/hero.jpg -->
+    <img src="assets/images/hero.jpg"
+         onerror="this.style.display='none'; this.nextElementSibling.style.background='linear-gradient(135deg,#052e16,#0f172a)';"
+         class="absolute inset-0 w-full h-full object-cover" alt="Biu Emirate">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10 max-w-5xl mx-auto text-center fade-in">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest mb-8">
+            <span class="flex h-2 w-2 rounded-full bg-green-500 badge-pulse"></span> Connecting Biu Worldwide
+        </div>
+        <h1 class="text-5xl lg:text-8xl font-extrabold text-white mb-8 leading-[1.1] tracking-tighter">
+            One community. <br><span class="text-green-400 italic">One voice.</span>
+        </h1>
+        <p class="text-lg lg:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+            Empowering the indigenes of Biu Emirate through information, connectivity, and collective development.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+            <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
+                    class="bg-green-600 text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-green-500 transition shadow-2xl shadow-green-900/50">
+                Explore the Platform
+            </button>
+            <a href="news.html" class="bg-white/5 border border-white/20 backdrop-blur-md text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition">
+                Latest Updates
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ═══ ABOUT ════════════════════════════════════════════════════════════════════ -->
+<section id="about" class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+        <div class="relative order-2 lg:order-1 scroll-anim">
+            <!-- Replace with assets/images/about.jpg -->
+            <img src="assets/images/about.jpg"
+                 onerror="this.outerHTML='<div class=\'rounded-[2rem] bg-green-50 h-80 flex items-center justify-center text-green-200 text-6xl\'><i class=\'fas fa-image\'></i></div>'"
+                 class="rounded-[2rem] shadow-2xl w-full object-cover" alt="Biu Community">
+            <div class="absolute -bottom-10 -right-10 bg-green-700 p-10 rounded-[2rem] shadow-2xl hidden md:block text-white">
+                <p class="text-4xl font-black mb-1 leading-none tracking-tighter">Est. 2026</p>
+                <p class="text-xs font-bold uppercase tracking-widest opacity-70">Ahmad Abdullahi – Director</p>
+            </div>
+        </div>
+        <div class="order-1 lg:order-2 scroll-anim">
+            <h2 class="text-green-700 font-extrabold text-sm uppercase tracking-widest mb-6 border-l-4 border-green-600 pl-4">Our Core Mission</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">Strengthening Engagement through Digital Unity.</h3>
+            <p class="text-slate-600 text-lg leading-relaxed mb-10 font-medium">Promoting information sharing, cultural identity, and leadership connection for the collective advancement of Biu people across Nigeria and the diaspora.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div class="group">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-700 mb-4 group-hover:bg-green-700 group-hover:text-white transition-all"><i class="fas fa-broadcast-tower"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Get Informed</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Access credible news and announcements about activities within the Biu Emirate.</p>
+                </div>
+                <div class="group">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-700 mb-4 group-hover:bg-green-700 group-hover:text-white transition-all"><i class="fas fa-handshake"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Connect & Engage</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Join thousands of Biu citizens connecting locally and globally for shared growth.</p>
+                </div>
+                <div class="group">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-700 mb-4 group-hover:bg-green-700 group-hover:text-white transition-all"><i class="fas fa-calendar-days"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Stay Updated</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Never miss important events, cultural celebrations, and community initiatives.</p>
+                </div>
+                <div class="group">
+                    <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-700 mb-4 group-hover:bg-green-700 group-hover:text-white transition-all"><i class="fas fa-shield"></i></div>
+                    <h4 class="font-bold text-lg mb-2">Preserve Heritage</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">Celebrate and preserve our rich Biu culture for future generations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FEATURES ═══════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Platform Features</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Everything You Need to Stay Connected</h3>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <a href="heritage.html" class="group bg-white rounded-[2rem] overflow-hidden hover-lift cursor-pointer shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+                    <i class="fas fa-monument text-6xl text-white opacity-80"></i>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-2xl font-bold mb-3 group-hover:text-green-700 transition">Heritage & Culture</h4>
+                    <p class="text-slate-600 mb-4">Explore our rich history, traditions, and cultural values that define the Biu community.</p>
+                    <span class="text-green-700 font-bold text-sm">Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+            </a>
+            <a href="emirs.html" class="group bg-white rounded-[2rem] overflow-hidden hover-lift cursor-pointer shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center">
+                    <i class="fas fa-crown text-6xl text-white opacity-80"></i>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-2xl font-bold mb-3 group-hover:text-green-700 transition">Past Emirs & Dignitaries</h4>
+                    <p class="text-slate-600 mb-4">Honour the legacy of those who shaped the Biu Emirate through generations of leadership.</p>
+                    <span class="text-green-700 font-bold text-sm">View Legacy <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+            </a>
+            <a href="gallery.html" class="group bg-white rounded-[2rem] overflow-hidden hover-lift cursor-pointer shadow-lg">
+                <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                    <i class="fas fa-images text-6xl text-white opacity-80"></i>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-2xl font-bold mb-3 group-hover:text-green-700 transition">Photo Gallery</h4>
+                    <p class="text-slate-600 mb-4">Browse memorable moments from community events, cultural celebrations, and projects.</p>
+                    <span class="text-green-700 font-bold text-sm">See Gallery <i class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ YOUTUBE VIDEOS ═══════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-slate-900">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/30 backdrop-blur-md px-4 py-2 rounded-full text-red-400 text-xs font-bold uppercase tracking-widest mb-6">
+                <i class="fab fa-youtube"></i> Watch on YouTube
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-black text-white mb-5 tracking-tight leading-tight">
+                Biu Emirate<br><span class="text-green-400">In Video</span>
+            </h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Watch community videos showcasing the beauty, people, history, and culture of the Biu Emirate — Borno State, Nigeria.
+            </p>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-10">
+
+            <!-- Video 1 -->
+            <div class="group scroll-anim">
+                <div class="relative rounded-[1.5rem] overflow-hidden shadow-2xl" style="padding-top:56.25%;">
+                    <iframe
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube.com/embed/BuH0u-QQYYg?rel=0&modestbranding=1"
+                        title="Biu Borno State — Community Showcase"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="flex items-center gap-4 mt-5">
+                    <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <i class="fab fa-youtube text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm leading-snug">Biu, Borno State — Community Showcase</p>
+                        <p class="text-slate-500 text-xs mt-0.5">Official community video · YouTube</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="group scroll-anim">
+                <div class="relative rounded-[1.5rem] overflow-hidden shadow-2xl" style="padding-top:56.25%;">
+                    <iframe
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube.com/embed/39xTICYGd4I?rel=0&modestbranding=1"
+                        title="Biu Borno State — Heritage & Culture"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="flex items-center gap-4 mt-5">
+                    <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <i class="fab fa-youtube text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm leading-snug">Biu, Borno State — Heritage & Culture</p>
+                        <p class="text-slate-500 text-xs mt-0.5">Official community video · YouTube</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA under videos -->
+        <div class="text-center">
+            <a href="heritage.html"
+               class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold transition-all">
+                <i class="fas fa-monument text-green-400"></i>
+                Explore Full Heritage & History
+                <i class="fas fa-arrow-right text-xs text-green-400"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══ LATEST NEWS ════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-20">
+        <div>
+            <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Latest Updates</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Community News & Announcements</h3>
+        </div>
+        <a href="news.html" class="mt-6 md:mt-0 text-green-700 font-bold text-lg hover:text-green-800 transition">
+            View All News <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+    <div id="homeNewsGrid" class="grid md:grid-cols-3 gap-8">
+        <!-- Populated by site.js from localStorage or placeholder cards -->
+        <div class="group news-card-dark rounded-[2rem] overflow-hidden hover-lift cursor-pointer scroll-anim">
+            <div class="h-56 bg-slate-100 relative overflow-hidden">
+                <img src="assets/images/news1.jpg" onerror="this.style.display='none'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                <div class="absolute inset-0 flex items-center justify-center text-slate-300 text-4xl"><i class="fas fa-newspaper"></i></div>
+                <div class="absolute top-6 left-6 bg-green-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">Development</div>
+            </div>
+            <div class="p-8">
+                <span class="text-slate-500 text-xs font-bold uppercase tracking-widest">Add your news via Admin</span>
+                <h4 class="text-xl font-bold mt-4 mb-4 leading-snug">Empowering Local Artisans: New Grants Announced</h4>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">The Biu Forum committee has launched a new fund aimed at supporting local craftsmen and businesses…</p>
+                <a href="news.html" class="text-green-700 font-bold text-sm hover:text-green-800 transition">Read Full Story <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+        </div>
+        <div class="group news-card-dark rounded-[2rem] overflow-hidden hover-lift cursor-pointer scroll-anim">
+            <div class="h-56 bg-slate-100 relative overflow-hidden">
+                <img src="assets/images/news2.jpg" onerror="this.style.display='none'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                <div class="absolute inset-0 flex items-center justify-center text-slate-300 text-4xl"><i class="fas fa-newspaper"></i></div>
+                <div class="absolute top-6 left-6 bg-blue-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">Education</div>
+            </div>
+            <div class="p-8">
+                <span class="text-slate-500 text-xs font-bold uppercase tracking-widest">Add your news via Admin</span>
+                <h4 class="text-xl font-bold mt-4 mb-4 leading-snug">Scholarship Program Opens for Biu Students Worldwide</h4>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">Applications are now open for the prestigious Biu Forum Educational Excellence scholarship program…</p>
+                <a href="news.html" class="text-green-700 font-bold text-sm hover:text-green-800 transition">Read Full Story <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+        </div>
+        <div class="group news-card-dark rounded-[2rem] overflow-hidden hover-lift cursor-pointer scroll-anim">
+            <div class="h-56 bg-slate-100 relative overflow-hidden">
+                <img src="assets/images/news3.jpg" onerror="this.style.display='none'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                <div class="absolute inset-0 flex items-center justify-center text-slate-300 text-4xl"><i class="fas fa-newspaper"></i></div>
+                <div class="absolute top-6 left-6 bg-amber-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">Culture</div>
+            </div>
+            <div class="p-8">
+                <span class="text-slate-500 text-xs font-bold uppercase tracking-widest">Add your news via Admin</span>
+                <h4 class="text-xl font-bold mt-4 mb-4 leading-snug">Cultural Heritage Summit Concludes Successfully</h4>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">Over 500 Biu citizens gathered to celebrate our traditions and plan cultural preservation initiatives…</p>
+                <a href="news.html" class="text-green-700 font-bold text-sm hover:text-green-800 transition">Read Full Story <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ EVENTS PREVIEW ══════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-20">
+            <div>
+                <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Community Calendar</h2>
+                <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Upcoming Events</h3>
+            </div>
+            <a href="events.html" class="mt-6 md:mt-0 text-green-700 font-bold text-lg hover:text-green-800 transition">View All Events <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+        <div class="space-y-6">
+            <div class="group bg-white p-6 lg:p-10 rounded-3xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 border border-transparent hover:border-green-200 hover:shadow-2xl transition-all duration-500">
+                <div class="flex items-start gap-10 w-full">
+                    <div class="bg-green-700 text-white p-6 rounded-2xl text-center shadow-xl group-hover:bg-green-800 transition-colors flex-shrink-0">
+                        <span class="block text-4xl font-black leading-none">28</span>
+                        <span class="text-xs font-extrabold uppercase tracking-widest">Feb</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">In-Person Event</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-900 mb-2">Monthly Town Hall Meeting</h4>
+                        <p class="text-slate-600 font-medium"><i class="fas fa-location-dot mr-2 text-green-600"></i>Biu Emirate Council Hall</p>
+                    </div>
+                </div>
+                <a href="events.html" class="w-full lg:w-auto bg-green-700 text-white px-12 py-4 rounded-2xl font-bold shadow-xl hover:bg-green-800 transition-all whitespace-nowrap">Register Now</a>
+            </div>
+            <div class="group bg-white p-6 lg:p-10 rounded-3xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 border border-transparent hover:border-green-200 hover:shadow-2xl transition-all duration-500">
+                <div class="flex items-start gap-10 w-full">
+                    <div class="bg-amber-600 text-white p-6 rounded-2xl text-center shadow-xl flex-shrink-0">
+                        <span class="block text-4xl font-black leading-none">14</span>
+                        <span class="text-xs font-extrabold uppercase tracking-widest">Mar</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Virtual Event</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-900 mb-2">Cultural Heritage Webinar Series</h4>
+                        <p class="text-slate-600 font-medium"><i class="fas fa-video mr-2 text-amber-600"></i>Zoom Platform • 6:00 PM WAT</p>
+                    </div>
+                </div>
+                <a href="events.html" class="w-full lg:w-auto bg-green-700 text-white px-12 py-4 rounded-2xl font-bold shadow-xl hover:bg-green-800 transition-all whitespace-nowrap">Join Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ══════════════════════════════════════════════════════════════════════ -->
+<section class="py-32 px-6 lg:px-20">
+    <div class="max-w-4xl mx-auto bg-gradient-to-r from-green-700 to-green-800 rounded-[3rem] p-12 lg:p-20 text-center text-white shadow-2xl">
+        <h2 class="text-4xl lg:text-5xl font-black mb-6 leading-tight">Ready to Join the Biu Community?</h2>
+        <p class="text-lg text-green-100 mb-10 max-w-2xl mx-auto">Connect with thousands of Biu citizens, stay informed about events, and be part of our collective growth story.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="events.html" class="bg-white text-green-700 px-12 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition shadow-lg">Explore Events</a>
+            <button onclick="openRegistry()" class="bg-white/20 border-2 border-white text-white px-12 py-4 rounded-2xl font-bold text-lg hover:bg-white/30 transition">Join Registry</button>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ REGISTRY FAB ════════════════════════════════════════════════════════════ -->
+<button onclick="openRegistry()" class="fixed bottom-8 right-8 z-50 bg-green-700 text-white w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center group" aria-label="Join Registry">
+    <i class="fas fa-bell text-xl group-hover:rotate-12 transition-transform"></i>
+    <span class="absolute -top-1 -right-1 bg-red-500 w-4 h-4 rounded-full border-2 border-white badge-pulse"></span>
+</button>
+
+<!-- ═══ REGISTRY MODAL ══════════════════════════════════════════════════════════ -->
+<div id="registryModal" class="fixed inset-0 z-[100] bg-slate-900/90 backdrop-blur-sm hidden items-center justify-center p-6">
+    <div class="bg-white w-full max-w-xl rounded-[3rem] p-12 relative shadow-2xl">
+        <button onclick="closeRegistry()" class="absolute top-8 right-8 text-slate-400 hover:text-slate-900 text-2xl" aria-label="Close"><i class="fas fa-times"></i></button>
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-black text-slate-900 mb-4">Official Registry</h3>
+            <p class="text-slate-500">Subscribe to verified alerts from the Emirate Council.</p>
+        </div>
+        <form onsubmit="handleRegistry(event)" class="space-y-6">
+            <input type="text" required placeholder="Full Name" class="w-full px-6 py-4 rounded-2xl border-2 border-slate-100 focus:border-green-700 outline-none">
+            <input type="email" required placeholder="Email Address" class="w-full px-6 py-4 rounded-2xl border-2 border-slate-100 focus:border-green-700 outline-none">
+            <button type="submit" class="w-full bg-green-700 text-white py-5 rounded-2xl font-bold text-lg hover:bg-green-800 transition">Join Registry</button>
+        </form>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

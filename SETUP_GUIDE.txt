@@ -1,0 +1,194 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║          BIU FORUM — PRODUCTION SETUP GUIDE                         ║
+║          Designed & Managed by Zion Netcom Solutions Limited        ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════
+STEP 1 — UNDERSTAND THE FOLDER STRUCTURE
+═══════════════════════════════════════════════════════════════════════
+
+biuforum/
+├── index.html          ← Homepage
+├── heritage.html       ← Heritage & Culture page
+├── emirs.html          ← Past Emirs & Dignitaries page (NEW)
+├── news.html           ← News & Announcements
+├── events.html         ← Community Events
+├── gallery.html        ← Photo Gallery
+├── logo.png            ← Your logo (already in place)
+│
+├── admin/
+│   └── dashboard.html  ← Admin Panel (Firebase-protected)
+│
+├── assets/
+│   ├── css/
+│   │   └── site.css    ← Shared styles
+│   ├── js/
+│   │   └── site.js     ← Shared logic (nav, footer, toasts)
+│   └── images/
+│       ├── README.txt  ← Image placement guide
+│       ├── hero.jpg         ← Replace with your photo
+│       ├── about.jpg        ← Replace with your photo
+│       ├── heritage-hero.jpg← Replace with your photo
+│       ├── news1.jpg        ← Replace with your photo
+│       ├── news2.jpg        ← Replace with your photo
+│       ├── news3.jpg        ← Replace with your photo
+│       └── emirs/           ← Replace each file with real portrait
+│           ├── isa-timta.jpg
+│           ├── lawan-gana.jpg
+│           └── ... (8 profiles total)
+
+═══════════════════════════════════════════════════════════════════════
+STEP 2 — REPLACE PLACEHOLDER IMAGES WITH YOUR OWN PHOTOS
+═══════════════════════════════════════════════════════════════════════
+
+1. Go into assets/images/
+2. Replace each .jpg file with your own photo of the SAME filename
+   e.g. rename your hero photo to "hero.jpg" and paste it in
+
+   TIPS:
+   ✓ Use landscape photos (wide) for hero.jpg, heritage-hero.jpg
+   ✓ Use portrait photos (tall) for emirs/ folder
+   ✓ Compress photos to under 500KB using squoosh.app (free)
+   ✓ The site degrades gracefully if a photo is missing
+
+═══════════════════════════════════════════════════════════════════════
+STEP 3 — SET UP FIREBASE AUTHENTICATION (Admin Login)
+═══════════════════════════════════════════════════════════════════════
+
+Your Firebase project is already connected. You just need to create
+your admin user account in Firebase Console:
+
+1. Open browser → go to https://console.firebase.google.com
+2. Select your project: "biu-forum"
+3. In the left menu click: Authentication → Users
+4. Click "Add User"
+5. Enter your admin email (e.g. admin@biuforum.com)
+6. Enter a strong password
+7. Click "Add User"
+
+That's it! You can now log in at:
+   your-website.com/admin/dashboard.html
+
+To add more admin users, repeat steps 4–7 for each person.
+
+═══════════════════════════════════════════════════════════════════════
+STEP 4 — ADD YOUR CONTENT VIA THE ADMIN PANEL
+═══════════════════════════════════════════════════════════════════════
+
+Go to: your-website.com/admin/dashboard.html
+
+A) ADD NEWS POSTS:
+   - Click "News Posts" in the sidebar
+   - Click "New Post"
+   - Fill in title, category, content, and upload a photo
+   - Click "Publish Post"
+   → The post will appear LIVE on news.html immediately
+
+B) ADD EVENTS:
+   - Click "Events" in the sidebar
+   - Click "Create Event"
+   - Fill in title, date, time, location, description
+   - Click "Save Event"
+   → The event will appear LIVE on events.html immediately
+
+C) ADD GALLERY PHOTOS:
+   - Click "Image Gallery" in the sidebar
+   - Click "Add Image"
+   - Upload your photo (from your computer)
+   - Add a caption and select a category
+   - Click "Save Image"
+   → Photo appears LIVE in gallery.html immediately
+
+All content is stored in your browser's localStorage. This works
+immediately without any server needed!
+
+═══════════════════════════════════════════════════════════════════════
+STEP 5 — UPDATE THE EMIRS & DIGNITARIES PAGE
+═══════════════════════════════════════════════════════════════════════
+
+The emirs.html page contains 8 profiles pre-loaded. To edit them:
+
+1. Open emirs.html in any text editor (Notepad, VS Code, etc.)
+2. Find the PROFILES array near the bottom of the file
+3. Each profile looks like:
+   {
+     name: "Emir Isa Timta",
+     title: "1st Emir of Biu",
+     years: "Reigned: Early 19th Century",
+     photo: "assets/images/emirs/isa-timta.jpg",
+     bio: "...",
+     achievements: ["...", "..."]
+   }
+4. Edit the name, title, years, bio to match the real person
+5. Replace the photo file in assets/images/emirs/ with the real photo
+6. Save the file
+
+To ADD a new profile:
+- Copy an existing { ... } block
+- Paste it at the end of the array (before the closing ] )
+- Update all fields
+- Add a photo to assets/images/emirs/ with the matching filename
+
+═══════════════════════════════════════════════════════════════════════
+STEP 6 — HOST YOUR WEBSITE (Go Live)
+═══════════════════════════════════════════════════════════════════════
+
+This is a static website — it works with any web host.
+
+RECOMMENDED OPTIONS:
+
+Option A — Netlify (FREE, easiest):
+  1. Go to netlify.com → Sign up free
+  2. Drag and drop the entire "biuforum" folder onto the page
+  3. Your site is live in under 60 seconds!
+  4. Get a free domain like: biuforum.netlify.app
+  5. Or connect your own domain (e.g. biuforum.com.ng)
+
+Option B — cPanel Web Hosting (Nigerian hosts):
+  1. Purchase hosting from Whogohost, QServers, or SmartWeb
+  2. Log in to cPanel → File Manager
+  3. Upload all files inside the biuforum/ folder to public_html/
+  4. Your site is live at your domain!
+
+Option C — GitHub Pages (FREE):
+  1. Create a free account at github.com
+  2. Create a new repository named "biuforum"
+  3. Upload all your files
+  4. Go to Settings → Pages → Deploy from main branch
+  5. Site is live at: yourusername.github.io/biuforum
+
+═══════════════════════════════════════════════════════════════════════
+STEP 7 — IMPORTANT NOTES FOR PRODUCTION
+═══════════════════════════════════════════════════════════════════════
+
+⚠ ABOUT DATA STORAGE:
+  Currently, news/events/gallery data is stored in localStorage.
+  This means the data lives in the browser of whoever adds it.
+  
+  For TRUE multi-admin content sharing across devices, you will
+  need to upgrade to a full Firebase Firestore integration.
+  Contact Zion Netcom Solutions Limited for this upgrade.
+
+⚠ ABOUT THE ADMIN PANEL:
+  The login is now REAL Firebase authentication — only people
+  with accounts you create in Firebase Console can log in.
+  No more demo mode!
+
+⚠ ABOUT FIREBASE SECURITY:
+  For production, set up Firebase Security Rules in the console
+  to restrict who can read/write data.
+
+⚠ COMPRESS YOUR IMAGES:
+  Large images slow down your site. Use squoosh.app to compress
+  each image to under 500KB before uploading.
+
+═══════════════════════════════════════════════════════════════════════
+CONTACT & SUPPORT
+═══════════════════════════════════════════════════════════════════════
+
+For technical support or upgrades:
+  Zion Netcom Solutions Limited
+  Phone: +234 706 758 9333
+  Email: info@biuforum.com
+
+© 2026 Biu Forum. All rights reserved.

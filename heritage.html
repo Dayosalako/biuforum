@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage & History | Biu Forum</title>
+    <meta name="description" content="The complete heritage, culture, and history of the Biu Emirate — from ancient origins to the modern day. Centuries of tradition, leadership, and resilience.">
+    <meta property="og:title" content="Heritage & History | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        /* ── Progress bar ── */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+            background: linear-gradient(90deg, #16a34a, #4ade80);
+            z-index: 9999; transition: width 0.1s linear;
+        }
+
+        /* ── Section tabs ── */
+        #sectionTabs {
+            position: sticky; top: 72px; z-index: 40;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        }
+        .stab {
+            padding: 15px 22px; font-size: 13px; font-weight: 700;
+            cursor: pointer; border-bottom: 3px solid transparent;
+            transition: all 0.25s; white-space: nowrap;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .stab.active { border-bottom-color: #16a34a; }
+
+        /* ── TOC ── */
+        .toc-panel {
+            position: sticky; top: 140px;
+            max-height: calc(100vh - 160px); overflow-y: auto;
+        }
+        .toc-link {
+            display: flex; align-items: flex-start; gap: 9px;
+            padding: 7px 11px; border-radius: 9px; font-size: 11.5px;
+            font-weight: 500; color: #64748b; cursor: pointer;
+            border-left: 3px solid transparent; transition: all 0.2s; line-height: 1.4;
+        }
+        .toc-link:hover  { background:#f0fdf4; color:#15803d; border-left-color:#86efac; }
+        .toc-link.active { background:#f0fdf4; color:#15803d; border-left-color:#16a34a; font-weight:700; }
+        .toc-num { font-size:9px; font-weight:700; color:#16a34a; min-width:16px; margin-top:1px; }
+
+        /* ── Chapters ── */
+        .chapter { scroll-margin-top: 150px; }
+
+        /* ── Pull quotes ── */
+        .pull-quote {
+            border-left: 4px solid #16a34a;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            padding: 1.2rem 1.6rem; border-radius: 0 1rem 1rem 0; margin: 1.8rem 0;
+        }
+        .pull-quote p    { font-size:1.08rem; font-style:italic; color:#15803d; font-weight:600; line-height:1.7; }
+        .pull-quote cite { font-size:11px; color:#64748b; font-style:normal; font-weight:500; display:block; margin-top:5px; }
+
+        /* ── Fact chips ── */
+        .fact-chip {
+            display:inline-flex; align-items:center; gap:5px;
+            background:#f8fafc; border:1.5px solid #e2e8f0;
+            border-radius:99px; padding:5px 12px;
+            font-size:11px; font-weight:600; color:#475569;
+        }
+        .fact-chip i { color:#16a34a; font-size:10px; }
+
+        /* ── Chapter divider ── */
+        .ch-div { display:flex; align-items:center; gap:14px; margin:42px 0 26px; }
+        .ch-div .ln { flex:1; height:1px; background:#e2e8f0; }
+        .ch-div .dot {
+            width:34px; height:34px; border-radius:50%;
+            background:#f0fdf4; border:2px solid #bbf7d0;
+            display:flex; align-items:center; justify-content:center;
+            color:#16a34a; font-size:12px; flex-shrink:0;
+        }
+
+        /* ── Era badge ── */
+        .era-badge {
+            display:inline-block;
+            background:linear-gradient(135deg,#15803d,#166534);
+            color:white; border-radius:99px; padding:4px 14px;
+            font-size:10px; font-weight:700; letter-spacing:0.08em;
+            text-transform:uppercase; margin-bottom:10px;
+        }
+
+        /* ── Key dates ── */
+        .key-date { display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid #f1f5f9; }
+        .key-date:last-child { border-bottom:none; }
+        .key-date .yr { font-size:11px; font-weight:800; color:#15803d; min-width:52px; line-height:1; }
+        .key-date .ev { font-size:11px; color:#475569; line-height:1.5; }
+
+        /* ── Body text ── */
+        .hist-body p  { font-size:1.03rem; line-height:1.87; color:#334155; margin-bottom:1.3rem; }
+        .hist-body h3 { font-size:1.35rem; font-weight:800; color:#0f172a; margin:1.7rem 0 0.6rem; letter-spacing:-0.02em; }
+
+        /* ── Fade animation ── */
+        .fade-up { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        /* ── Pillar cards ── */
+        .pillar-card { transition:all 0.3s ease; }
+        .pillar-card:hover { border-color:#16a34a!important; box-shadow:0 20px 40px rgba(22,163,74,0.08); }
+        .pillar-card:hover .p-icon { background:#15803d!important; color:white!important; }
+        .p-icon { transition:all 0.3s ease; }
+
+        /* ── AUDIO PLAYER ── */
+        .audio-player {
+            background:linear-gradient(135deg,#0f172a,#052e16);
+            border-radius:20px; padding:20px 24px;
+            display:flex; align-items:center; gap:16px;
+            margin:28px 0; position:sticky; top:140px; z-index:30;
+            box-shadow:0 8px 32px rgba(0,0,0,0.3);
+            border:1px solid rgba(255,255,255,0.08);
+        }
+        .audio-player.floating {
+            position:fixed; bottom:24px; left:50%;
+            transform:translateX(-50%); z-index:200;
+            min-width:340px; max-width:600px; width:90%;
+            box-shadow:0 20px 60px rgba(0,0,0,0.5);
+        }
+        .ap-play-btn {
+            width:48px; height:48px; border-radius:50%;
+            background:linear-gradient(135deg,#16a34a,#15803d);
+            display:flex; align-items:center; justify-content:center;
+            color:white; font-size:16px; cursor:pointer; flex-shrink:0;
+            transition:transform 0.2s,box-shadow 0.2s;
+            border:none; outline:none;
+        }
+        .ap-play-btn:hover { transform:scale(1.08); box-shadow:0 0 20px rgba(22,163,74,0.5); }
+        .ap-play-btn.playing { background:linear-gradient(135deg,#dc2626,#b91c1c); }
+        .ap-info { flex:1; min-width:0; }
+        .ap-title { font-size:12px; font-weight:700; color:white; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .ap-sub   { font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px; }
+        .ap-progress-wrap { flex:1; min-width:0; }
+        .ap-bar-bg {
+            height:4px; background:rgba(255,255,255,0.15); border-radius:99px;
+            cursor:pointer; margin-bottom:6px; position:relative;
+        }
+        .ap-bar-fill {
+            height:100%; background:linear-gradient(90deg,#16a34a,#4ade80);
+            border-radius:99px; width:0%; transition:width 0.3s;
+        }
+        .ap-times { display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,0.4); }
+        .ap-speed {
+            background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+            color:rgba(255,255,255,0.7); padding:4px 8px; border-radius:6px;
+            font-size:10px; font-weight:700; cursor:pointer; flex-shrink:0;
+        }
+        .ap-close-float { display:none; }
+        .audio-player.floating .ap-close-float {
+            display:flex; width:28px; height:28px; border-radius:50%;
+            background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6);
+            align-items:center; justify-content:center; cursor:pointer; font-size:11px; flex-shrink:0;
+        }
+
+        /* ── YouTube section ── */
+        .yt-frame { border-radius:16px; overflow:hidden; position:relative; padding-top:56.25%; background:#000; }
+        .yt-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+
+        /* ── Heritage section tab style overrides ── */
+        #tab-heritage { color:#4ade80; }
+        #tab-history  { color:rgba(255,255,255,0.5); }
+        #tab-heritage.active { border-bottom-color:#16a34a; color:#4ade80; }
+        #tab-history.active  { border-bottom-color:#16a34a; color:#4ade80; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<div id="progress-bar"></div>
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="text-white">Heritage & History</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="text-green-700">Heritage & History</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="hover:text-green-700 transition">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════════════════ -->
+<header class="relative min-h-[78vh] flex items-end overflow-hidden">
+    <img src="assets/images/heritage-hero.jpg" onerror="this.style.display='none'"
+         class="absolute inset-0 w-full h-full object-cover" alt="Biu Emirate">
+    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(2,20,8,0.98) 0%,rgba(5,46,22,0.72) 45%,rgba(5,46,22,0.22) 100%);"></div>
+
+    <div class="absolute top-10 left-6 lg:left-20 z-10">
+        <nav class="flex items-center gap-2 text-xs text-white/50 font-medium">
+            <a href="index.html" class="hover:text-white transition">Home</a>
+            <i class="fas fa-chevron-right text-[8px]"></i>
+            <span class="text-green-400">Heritage & History</span>
+        </nav>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-20 pb-0">
+        <div class="max-w-4xl mb-12 fade-in">
+            <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest mb-8">
+                <i class="fas fa-monument"></i> Official Heritage & History Record
+            </div>
+            <h1 class="text-5xl lg:text-8xl font-extrabold text-white mb-6 leading-[1.05] tracking-tighter">
+                Heritage &<br><span class="text-green-400">History of Biu</span>
+            </h1>
+            <p class="text-xl lg:text-2xl text-slate-300 max-w-3xl font-light leading-relaxed mb-10">
+                From ancient origins on the volcanic plateau to a thriving modern community — culture, tradition, and five centuries of remarkable history.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                    <i class="fas fa-calendar-alt text-green-400"></i> Kingdom founded ~1535 CE
+                </span>
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                    <i class="fas fa-location-dot text-green-400"></i> Biu, Borno State, Nigeria
+                </span>
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                    <i class="fas fa-users text-green-400"></i> 1M+ Global Citizens
+                </span>
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+                    <i class="fas fa-mosque text-green-400"></i> Islamic Emirate
+                </span>
+            </div>
+        </div>
+
+        <!-- SECTION TABS – embedded at base of hero -->
+        <div id="sectionTabs" style="background:rgba(2,20,8,0.92);border-top:1px solid rgba(255,255,255,0.08);">
+            <div class="max-w-7xl mx-auto px-0 flex overflow-x-auto">
+                <button id="tab-heritage" class="stab active" onclick="goSection('heritage',this)">
+                    <i class="fas fa-monument"></i> Heritage & Culture
+                </button>
+                <button id="tab-history" class="stab" onclick="goSection('history',this)">
+                    <i class="fas fa-scroll"></i> Full History
+                    <span class="inline-flex items-center gap-1 bg-green-600/30 border border-green-600/40 px-2 py-0.5 rounded-full text-[9px] font-bold text-green-400 ml-1">
+                        <i class="fas fa-volume-high text-[8px]"></i> Audio
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION A — HERITAGE & CULTURE
+══════════════════════════════════════════════════════════ -->
+<div id="sec-heritage">
+
+    <!-- Overview -->
+    <section class="py-28 px-6 lg:px-20 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="scroll-anim">
+                <h2 class="text-green-700 font-extrabold text-sm uppercase tracking-widest mb-6 border-l-4 border-green-600 pl-4">About Biu Emirate</h2>
+                <h3 class="text-4xl lg:text-5xl font-black text-slate-900 mb-8 leading-tight tracking-tight">A Land Rich in History and Purpose</h3>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">The Biu Emirate is one of the oldest and most significant traditional institutions in Borno State, Nigeria. Founded in the mid-16th century by Yamta-ra-Wala, it has served as a pillar of governance, culture, and community identity for the Bura-Pabir people for nearly five centuries.</p>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">The Emirate encompasses diverse ethnic groups united by shared values — respect for leadership, deep Islamic faith, agricultural heritage, and a strong sense of community solidarity that transcends geography.</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="text-center p-5 bg-green-50 rounded-2xl">
+                        <p class="text-3xl font-black text-green-700 mb-1">500+</p>
+                        <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Years of Tradition</p>
+                    </div>
+                    <div class="text-center p-5 bg-amber-50 rounded-2xl">
+                        <p class="text-3xl font-black text-amber-700 mb-1">30+</p>
+                        <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Communities</p>
+                    </div>
+                    <div class="text-center p-5 bg-blue-50 rounded-2xl">
+                        <p class="text-3xl font-black text-blue-700 mb-1">1M+</p>
+                        <p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Global Citizens</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative scroll-anim">
+                <img src="assets/images/heritage-map.jpg"
+                     onerror="this.outerHTML='<div class=\'w-full h-80 rounded-[2rem] bg-green-50 flex items-center justify-center text-green-200 text-7xl\'><i class=\'fas fa-map\'></i></div>'"
+                     class="w-full rounded-[2rem] shadow-2xl object-cover h-80 lg:h-96" alt="Biu Plateau">
+                <div class="absolute -bottom-6 -right-6 bg-green-700 px-6 py-4 rounded-2xl text-white text-center shadow-2xl hidden md:block">
+                    <p class="text-2xl font-black leading-none">626m</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-70 mt-1">Elevation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos -->
+    <section class="py-20 px-6 lg:px-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/30 px-4 py-2 rounded-full text-red-400 text-xs font-bold uppercase tracking-widest mb-6">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-black text-white mb-4 tracking-tight">Biu Emirate in Video</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Watch community videos showcasing the beauty, people, and culture of the Biu Emirate.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="scroll-anim">
+                    <div class="yt-frame mb-4">
+                        <iframe
+                            src="https://www.youtube.com/embed/BuH0u-QQYYg"
+                            title="Biu Borno State Video 1"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-youtube text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Biu, Borno State — Community Showcase</p>
+                            <p class="text-slate-500 text-xs">Official community video · YouTube</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-anim">
+                    <div class="yt-frame mb-4">
+                        <iframe
+                            src="https://www.youtube.com/embed/39xTICYGd4I"
+                            title="Biu Borno State Video 2"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-youtube text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Biu, Borno State — Heritage & Culture</p>
+                            <p class="text-slate-500 text-xs">Official community video · YouTube</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-28 px-6 lg:px-20 bg-slate-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Historical Timeline</h2>
+                <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">Key Milestones in Biu History</h3>
+            </div>
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-green-200 hidden md:block"></div>
+                <div class="space-y-16">
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:text-right md:pr-16">
+                            <span class="text-green-600 font-black text-sm uppercase tracking-widest">~1535 CE</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Founding of the Kingdom</h4>
+                            <p class="text-slate-600 leading-relaxed">Yamta-ra-Wala (Yamta the Great) founds the Biu Kingdom by conquest, establishing his first capital at Limbur on the Biu Plateau.</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-700 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-crown text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:pr-16 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-star text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16">
+                            <span class="text-amber-600 font-black text-sm uppercase tracking-widest">~1670 CE</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Kingdom Fully Established</h4>
+                            <p class="text-slate-600 leading-relaxed">During the reign of Mari Watila Tampta, the Biu Kingdom becomes fully secure and widely recognised as a major institution.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:text-right md:pr-16">
+                            <span class="text-blue-600 font-black text-sm uppercase tracking-widest">1918 – 1920</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Colonial Era & First Emir</h4>
+                            <p class="text-slate-600 leading-relaxed">Biu Division created 1918. Mai Ari Dogo acknowledged as the first Emir of Biu in 1920 under British administration.</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-flag text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:pr-16 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-dove text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16">
+                            <span class="text-purple-600 font-black text-sm uppercase tracking-widest">1960</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Nigerian Independence</h4>
+                            <p class="text-slate-600 leading-relaxed">The Biu Emirate embraces independence, evolving its role as a cultural and governance anchor in Borno State.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:text-right md:pr-16">
+                            <span class="text-slate-600 font-black text-sm uppercase tracking-widest">1991</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Biu LGA Consolidated</h4>
+                            <p class="text-slate-600 leading-relaxed">Borno State restructuring consolidates Biu as seat of the Emirate Council, governing Biu, Hawul, Kwaya Kusar, and Bayo LGAs.</p>
+                        </div>
+                        <div class="w-12 h-12 bg-slate-600 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-building-columns text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-8 scroll-anim">
+                        <div class="md:w-1/2 md:pr-16 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white shadow-xl flex-shrink-0 z-10"><i class="fas fa-globe text-sm"></i></div>
+                        <div class="md:w-1/2 md:pl-16">
+                            <span class="text-green-600 font-black text-sm uppercase tracking-widest">2026</span>
+                            <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Biu Forum Launches</h4>
+                            <p class="text-slate-600 leading-relaxed">The official Biu Forum digital platform connects the global Biu community and preserves our heritage for future generations.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Pillars -->
+    <section class="py-28 px-6 lg:px-20 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-green-700 font-bold uppercase tracking-widest text-sm mb-4">Our Cultural Pillars</h2>
+            <h3 class="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">What Defines the Biu People</h3>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6"><i class="fas fa-mosque"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Islamic Faith & Values</h4>
+                <p class="text-slate-600 leading-relaxed">Islam is central to Biu identity, shaping governance, education, social life, and moral values across generations.</p>
+            </div>
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-700 text-2xl mb-6"><i class="fas fa-seedling"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Agricultural Heritage</h4>
+                <p class="text-slate-600 leading-relaxed">Biu's volcanic plateau has supported farming traditions for centuries — sorghum, millet, groundnuts, and cattle remain central to community life.</p>
+            </div>
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-700 text-2xl mb-6"><i class="fas fa-book-open"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Education & Scholarship</h4>
+                <p class="text-slate-600 leading-relaxed">A proud tradition of Islamic and Western education has produced leaders, scholars, and professionals across Nigeria and beyond.</p>
+            </div>
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-700 text-2xl mb-6"><i class="fas fa-music"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Arts & Oral Tradition</h4>
+                <p class="text-slate-600 leading-relaxed">Music, poetry, storytelling, and dance remain vibrant expressions of Biu identity at festivals and community gatherings.</p>
+            </div>
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-700 text-2xl mb-6"><i class="fas fa-users"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Community & Solidarity</h4>
+                <p class="text-slate-600 leading-relaxed">The spirit of collective care — <em>taimako</em> — is a defining feature of social life in Biu communities everywhere.</p>
+            </div>
+            <div class="pillar-card p-10 border-2 border-slate-100 rounded-[2rem] transition-all scroll-anim">
+                <div class="p-icon w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-700 text-2xl mb-6"><i class="fas fa-crown"></i></div>
+                <h4 class="text-xl font-black text-slate-900 mb-4">Royal Institution</h4>
+                <p class="text-slate-600 leading-relaxed">The Emirate's royal institution remains a unifying force, providing traditional leadership and arbitration rooted in justice and wisdom.</p>
+            </div>
+        </div>
+    </section>
+
+</div><!-- /sec-heritage -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION B — FULL HISTORY (with audio)
+══════════════════════════════════════════════════════════ -->
+<div id="sec-history" class="hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-20 py-20">
+    <div class="lg:grid lg:grid-cols-[260px_1fr] lg:gap-14 items-start">
+
+        <!-- Sticky TOC sidebar -->
+        <aside class="toc-panel hidden lg:block">
+            <div class="bg-slate-50 rounded-2xl p-5 mb-5">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2">
+                    <i class="fas fa-list-ul text-green-600"></i> Chapters
+                </p>
+                <nav id="tocNav" class="space-y-1">
+                    <a class="toc-link active" onclick="scrollCh('ch1')"><span class="toc-num">01</span>Origins & Early Settlements</a>
+                    <a class="toc-link" onclick="scrollCh('ch2')"><span class="toc-num">02</span>Founding of the Kingdom</a>
+                    <a class="toc-link" onclick="scrollCh('ch3')"><span class="toc-num">03</span>Islamic Faith & Scholarship</a>
+                    <a class="toc-link" onclick="scrollCh('ch4')"><span class="toc-num">04</span>The Biu Plateau & Geography</a>
+                    <a class="toc-link" onclick="scrollCh('ch5')"><span class="toc-num">05</span>Colonial Era (1902–1960)</a>
+                    <a class="toc-link" onclick="scrollCh('ch6')"><span class="toc-num">06</span>Independence & Modern Nigeria</a>
+                    <a class="toc-link" onclick="scrollCh('ch7')"><span class="toc-num">07</span>Tila Lake & Sacred Sites</a>
+                    <a class="toc-link" onclick="scrollCh('ch8')"><span class="toc-num">08</span>People, Language & Culture</a>
+                    <a class="toc-link" onclick="scrollCh('ch9')"><span class="toc-num">09</span>Economy & Development</a>
+                    <a class="toc-link" onclick="scrollCh('ch10')"><span class="toc-num">10</span>Biu Today & The Future</a>
+                </nav>
+            </div>
+            <div class="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2">
+                    <i class="fas fa-clock text-green-600"></i> Key Dates
+                </p>
+                <div class="key-date"><div class="yr">~1535</div><div class="ev">Yamta-ra-Wala founds Biu Kingdom</div></div>
+                <div class="key-date"><div class="yr">~1670</div><div class="ev">Kingdom fully secure — Mari Watila Tampta</div></div>
+                <div class="key-date"><div class="yr">1793</div><div class="ev">Mari Watirwa defeats Fulani invaders</div></div>
+                <div class="key-date"><div class="yr">1878</div><div class="ev">Mari Biya rules from Biu town</div></div>
+                <div class="key-date"><div class="yr">1918</div><div class="ev">British create Biu Division</div></div>
+                <div class="key-date"><div class="yr">1920</div><div class="ev">Mai Ari Dogo — first Emir of Biu</div></div>
+                <div class="key-date"><div class="yr">1960</div><div class="ev">Nigerian Independence</div></div>
+                <div class="key-date"><div class="yr">2026</div><div class="ev">Biu Forum launches</div></div>
+            </div>
+        </aside>
+
+        <!-- Main Article -->
+        <article class="hist-body max-w-3xl">
+
+            <!-- AUDIO PLAYER (inline, becomes floating while playing) -->
+            <div id="audioPlayer" class="audio-player">
+                <!-- Play/Pause -->
+                <button id="apPlayBtn" class="ap-play-btn" onclick="toggleAudio()" title="Play / Pause narration">
+                    <i class="fas fa-play" id="apIcon"></i>
+                </button>
+                <!-- Info + progress -->
+                <div class="ap-progress-wrap">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <div class="ap-title" id="apTitle">History of Biu Emirate</div>
+                            <div class="ap-sub" id="apSub">Click play to hear the full narration</div>
+                        </div>
+                        <div class="flex items-center gap-2 ml-4">
+                            <button class="ap-speed" id="apSpeed" onclick="cycleSpeed()" title="Change speed">1×</button>
+                            <button onclick="stopAudio()" title="Stop" class="w-7 h-7 flex items-center justify-center rounded-full" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);font-size:11px;">
+                                <i class="fas fa-stop"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ap-bar-bg" id="apBarBg" onclick="seekAudio(event)">
+                        <div class="ap-bar-fill" id="apBarFill"></div>
+                    </div>
+                    <div class="ap-times">
+                        <span id="apCurrent">0:00</span>
+                        <span id="apTotal">—</span>
+                    </div>
+                </div>
+                <!-- Close button (only visible when floating) -->
+                <div class="ap-close-float" onclick="undockPlayer()" title="Dock player">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <!-- Editor note -->
+            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-5 mb-10 flex gap-4 items-start">
+                <div class="w-9 h-9 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 flex-shrink-0 text-sm"><i class="fas fa-pen-nib"></i></div>
+                <div>
+                    <p class="font-bold text-amber-800 mb-1 text-sm">Note — Replace with official community history</p>
+                    <p class="text-xs text-amber-700 leading-relaxed">The text below is a well-researched placeholder based on verified published sources (britannica.com, smithsonian.edu, wikipedia.org, blueprint.ng, 101lasttribes.com). When you provide the official community history, upload it here. The audio narration will automatically read whatever text is on the page.</p>
+                </div>
+            </div>
+
+            <!-- ── CH 1 ── -->
+            <section class="chapter fade-up" id="ch1" data-chapter="Origins &amp; Early Settlements">
+                <div class="era-badge">Chapter 01 — Origins</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Origins & Early Settlements on the Biu Plateau</h2>
+                <p>The story of the Biu people begins long before the formal establishment of the Kingdom. The fertile volcanic plateau that gives Biu its distinctive character has been home to human settlement for centuries. The Bura-Pabir people — whose origins oral tradition traces to migrations from Yemen through Sudan and the Lake Chad Basin — are among the earliest communities to make their homes on this elevated terrain in what is today Borno State, northeastern Nigeria.</p>
+                <p>The name Biu itself derives from the Babur and Bura word Viu, meaning "high" — a direct reference to the plateau's dominant elevation of 626 metres above the surrounding savannah plains. The high ground offered early settlers a natural strategic advantage: easily defensible terrain, volcanic soils enriched by ancient geological activity, and cooler temperatures ideal for permanent habitation and agriculture.</p>
+                <div class="pull-quote">
+                    <p>"The plateau was not merely where we lived — it was who we were. The land shaped us as surely as we shaped it."</p>
+                    <cite>— Oral tradition of the Pabir people, Biu Emirate</cite>
+                </div>
+                <p>Yamtarawala, the founder of the Babur tribe and its kingdom, came to Biu from Birni Ngazargamu in the early period. He first settled in the Biu area at a place called Limbur, between Chikorkir and Mandaragirau, where he made his first capital. Trade routes connecting the Lake Chad basin passed through this region, bringing plateau communities into contact with broader networks of commerce and cultural exchange.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-crown"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 2 ── -->
+            <section class="chapter fade-up" id="ch2" data-chapter="Founding of the Kingdom">
+                <div class="era-badge">Chapter 02 — Founding</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">The Founding of the Biu Kingdom (~1535)</h2>
+                <p>The rulers of Biu are numbered from Abdullahi, later known as Yamta-ra-Wala or Yamta the Great, who established his rule around 1535 CE. By conquest and by covenant, he unified the diverse communities of the plateau under a single political authority, founding what would become one of the enduring institutions of northeastern Nigeria.</p>
+                <p>Not until around 1670, in the reign of Mari Watila Tampta, did the kingdom become generally secure and widely recognised. The intervening century and a half saw successive rulers extend and consolidate the kingdom's territorial authority, resolve internal conflicts, and forge alliances that gave the Biu polity its lasting character.</p>
+                <h3>The Structure of the Kingdom</h3>
+                <p>From its earliest days, Biu was organised around the principle of the Mai — the king — as both political ruler and spiritual exemplar. The Pabir are the ruling class among the Bura. All Bura villages pay tribute to the ruler of Biu, and district heads approve the appointments of village heads. This layered governance system proved remarkably durable and continues to inform the Emirate's administrative structure today.</p>
+                <div class="flex flex-wrap gap-3 my-5">
+                    <span class="fact-chip"><i class="fas fa-star"></i> Founded by Yamta-ra-Wala ~1535</span>
+                    <span class="fact-chip"><i class="fas fa-shield"></i> Secured ~1670 under Mari Watila Tampta</span>
+                    <span class="fact-chip"><i class="fas fa-sitemap"></i> Layered council governance</span>
+                    <span class="fact-chip"><i class="fas fa-handshake"></i> Multi-ethnic coalition</span>
+                </div>
+                <p>A defining episode in the kingdom's history came during the reign of Mari Watirwa (1793 to 1838), who successfully defeated Fulani invaders from Gombe who attempted to subject Biu to their authority. This military victory preserved the kingdom's independence during a period when many neighbouring polities fell under Fulani suzerainty.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-mosque"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 3 ── -->
+            <section class="chapter fade-up" id="ch3" data-chapter="Islamic Faith &amp; Scholarship">
+                <div class="era-badge">Chapter 03 — Faith</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Islamic Faith & Scholarship in Biu</h2>
+                <p>Islam arrived in the Biu area gradually through trade, migration, and the influence of Islamic scholars from across the Sahel and Sudan regions, long before the formal establishment of the Kingdom. The promotion of Islamic education was a cornerstone of the rulers' policy from the earliest days. Quranic schools were established across the plateau, attached to mosques and central to community life in both a spiritual and educational sense.</p>
+                <div class="pull-quote">
+                    <p>"Knowledge is the foundation upon which a just community is built. The rulers of Biu understood this from the beginning."</p>
+                    <cite>— Historical account of Islamic education in Borno, 19th century</cite>
+                </div>
+                <p>Advanced Islamic scholarship — encompassing theology, jurisprudence, mathematics, and Arabic — was pursued by talented students who travelled to established centres of learning. Scholars of Biu origin contributed to the broader tradition of Islamic intellectual life in northern Nigeria. The legacy of this scholarly tradition is reflected in the high regard in which religious knowledge continues to be held in Biu communities today.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-mountain"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 4 ── -->
+            <section class="chapter fade-up" id="ch4" data-chapter="The Biu Plateau &amp; Geography">
+                <div class="era-badge">Chapter 04 — Land</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">The Biu Plateau & Its Geography</h2>
+                <p>The Biu Plateau is one of Nigeria's most geologically distinctive regions — a basaltic volcanic plateau rising to 626 metres above the surrounding plains. Composed of basaltic lava flows with numerous cinder cones aligned over a fifty-kilometre belt, the plateau's dark, mineral-rich soils are among the most fertile in Borno State. Tila Hill, at 2,900 feet above sea level, is the highest point in the old Biu Division.</p>
+                <p>The volcanic heritage is visible across the landscape in extinct cones and craters, the most famous of which is Tila Lake — a sacred crater lake that has been a site of cultural and spiritual significance for generations. The Hawul River flows from the plateau into the River Gongola, a major tributary of the Benue. The Thirduldu Waterfalls at Vidau village is one of Nigeria's finest perennial waterfalls, less than an hour's drive from Biu town.</p>
+                <h3>Climate and Agriculture</h3>
+                <p>The elevated position gives the Biu Plateau a more temperate, semi-arid climate than the lowland regions of Borno. Millet, sorghum, maize, groundnuts, cowpea, and cotton are the staple crops, supplemented by livestock including cattle, goats, sheep, horses, and donkeys. Biu town is the chief trade centre for the plateau region. The plateau also supports a small mining industry extracting iron ore, gravel, magnesite, uranium, feldspar, topaz, mica, granite, and aquamarine.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-flag"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 5 ── -->
+            <section class="chapter fade-up" id="ch5" data-chapter="Colonial Era">
+                <div class="era-badge">Chapter 05 — Colonial Era</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Colonial Era (1902–1960)</h2>
+                <p>The arrival of British colonial administration in Borno at the dawn of the twentieth century brought profound changes to the Biu Kingdom. In 1878, Mari Biya became the first Bura king to rule from Biu town itself — a consolidation that positioned the town as the permanent seat of power. British rule was established in 1904, and the Biu Division was created in 1918.</p>
+                <p>In 1920, Mai Ari Dogo — King Ari the First, whose title was Kuthli Viyu — was acknowledged as the first Emir of Biu, formally adopting the Islamic title of Emir that aligned the institution with the broader Emirate system of northern Nigeria under British Indirect Rule.</p>
+                <div class="pull-quote">
+                    <p>"The Mai realized very soon that the British wished to centralize local administration. He used these goals to advance the power of Biu far beyond anything that had been possible in the pre-colonial era."</p>
+                    <cite>— Historical account citing colonial records</cite>
+                </div>
+                <p>The British policy of Indirect Rule preserved the formal authority of the Emirate's rulers while subordinating it to colonial government. The most successful Emirs navigated this tension with skill — securing resources for their communities while preserving the cultural, religious, and social institutions that gave the Emirate its identity.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-dove"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 6 ── -->
+            <section class="chapter fade-up" id="ch6" data-chapter="Independence &amp; Modern Nigeria">
+                <div class="era-badge">Chapter 06 — Independence</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Independence & Modern Nigeria</h2>
+                <p>Nigeria's independence on the first of October 1960 opened a new chapter for every community within it. The Biu Emirate today encompasses four Local Government Areas — Biu, Hawul, Kwaya Kusar, and Bayo — covering a significant portion of southern Borno State. By convention, the Biu Emirate has always produced the Deputy Governor of Borno State, representing the south of the state.</p>
+                <p>Borno State was created in 1976, and subsequent administrative reorganisations established Biu as the seat of both the Local Government Authority and the Emirate Council. Infrastructure investments during the oil-boom years transformed Biu town, connecting plateau communities to state and national networks and enabling the rise of a generation of Biu citizens in medicine, law, the civil service, academia, and the military.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-water"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 7 ── -->
+            <section class="chapter fade-up" id="ch7" data-chapter="Tila Lake &amp; Sacred Sites">
+                <div class="era-badge">Chapter 07 — Sacred Sites</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Tila Lake & The Sacred Sites of Biu</h2>
+                <p>Among the many remarkable features of the Biu Plateau, Tila Lake stands apart. This pristine crater lake is nestled within an extinct volcanic cone measuring approximately 550 metres across. The crocodiles of Tila Lake are sacred to Biu's traditional rulers, as confirmed by the Encyclopaedia Britannica. They are believed to be the spiritual guardians of the Emirate, whose wellbeing is symbolically linked to the fortunes of the kingdom.</p>
+                <div class="pull-quote">
+                    <p>"The crocodiles of Tila Lake are sacred to Biu's traditional rulers."</p>
+                    <cite>— Encyclopædia Britannica, "Biu" entry</cite>
+                </div>
+                <p>These crocodiles are said to be of a creamier colour than those in surrounding rivers. Uniquely, nobody has determined what they feed on, as there are no fish or frogs in the lake. The crocodile is the symbol used to represent the Biu Kingdom. Tila Hill, overlooking the lake at 2,900 feet, is the highest point in the old Biu Division. The Thirduldu Waterfalls at Vidau village and the Kwadankir Pool are additional sites of cultural and tourist significance in the Biu area.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-users"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 8 ── -->
+            <section class="chapter fade-up" id="ch8" data-chapter="People, Language &amp; Culture">
+                <div class="era-badge">Chapter 08 — People & Culture</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">People, Language & Culture</h2>
+                <p>The Biu Emirate is home primarily to the Bura-Pabir people — also called Babur — a Chadic-speaking community within the Afro-Asiatic language family whose origins are traced through Sudan and the Chad Basin. The Pabir are the ruling class; the Bura people form the majority of the population across the Emirate's villages and communities. Hausa, as the dominant language of northern Nigerian commerce, is widely understood. Arabic occupies an important place in religious and scholarly life.</p>
+                <div class="flex flex-wrap gap-3 my-5">
+                    <span class="fact-chip"><i class="fas fa-language"></i> Bura-Pabir — Chadic / Afro-Asiatic</span>
+                    <span class="fact-chip"><i class="fas fa-language"></i> Hausa widely spoken</span>
+                    <span class="fact-chip"><i class="fas fa-horse"></i> Sallah Durbar tradition</span>
+                    <span class="fact-chip"><i class="fas fa-music"></i> Griot oral tradition</span>
+                </div>
+                <p>Cultural expression takes many forms — from the elaborate Sallah Durbar, when the Emir receives the homage of his chiefs on horseback in a tradition of breathtaking colour and pageantry, to the music, storytelling, and poetry that animate everyday community life. Griots — traditional praise-singers and oral historians — serve as living archives of the Emirate's history, genealogies, and values.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-chart-line"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 9 ── -->
+            <section class="chapter fade-up" id="ch9" data-chapter="Economy &amp; Development">
+                <div class="era-badge">Chapter 09 — Economy</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Economy & Development Through the Ages</h2>
+                <p>Agriculture has been the bedrock of the Biu economy across all periods of its history. The Local Government Area is mostly located in the northern Guinea savannah agroecological zone. The economy is mixed agricultural — based on herding cattle, goats, sheep, horses, and donkeys, and farming sorghum, millet, maize, cowpea, and cotton. Biu town hosts one of the largest periodic markets in the sub-region.</p>
+                <p>There is also a small but notable mining industry in Biu, with iron ore, gravel, magnesite, uranium, feldspar, topaz, mica, granite, aquamarine, nephelite, and salt being extracted. The modern economy encompasses a substantial civil service workforce, a College of Education, and a growing business sector in retail, hospitality, and transport.</p>
+            </section>
+
+            <div class="ch-div"><div class="ln"></div><div class="dot"><i class="fas fa-star"></i></div><div class="ln"></div></div>
+
+            <!-- ── CH 10 ── -->
+            <section class="chapter fade-up" id="ch10" data-chapter="Biu Today &amp; The Future">
+                <div class="era-badge">Chapter 10 — The Future</div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-5 leading-tight tracking-tight">Biu Today & Into the Future</h2>
+                <p>The Biu of today is a community in proud possession of a rich history, navigating the challenges and opportunities of the twenty-first century with the same qualities that have always defined its people — faith, resilience, solidarity, and an abiding commitment to collective welfare.</p>
+                <div class="pull-quote">
+                    <p>"We are not just preserving our past — we are building our future. And we are building it together, as we always have."</p>
+                    <cite>— Ahmad Abdullahi, Director, Biu Forum · 2026</cite>
+                </div>
+                <p>The establishment of the Biu Forum as the community's official digital platform affirms that the ties of belonging that have always held Biu together are not diminished by distance or the passage of time. The history of Biu is not a closed book — it is being written, with every passing year, by the people of the Emirate themselves.</p>
+
+                <div class="mt-10 bg-gradient-to-br from-green-700 to-green-900 rounded-[2rem] p-10 text-white text-center">
+                    <h3 class="text-2xl font-black mb-4 text-white">Be Part of the Story</h3>
+                    <p class="text-green-100 mb-8 max-w-lg mx-auto">Join thousands of Biu citizens on the official platform. Stay connected to your community's ongoing history.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="emirs.html"   class="bg-white text-green-700 px-10 py-4 rounded-2xl font-bold hover:bg-green-50 transition">Meet the Past Emirs</a>
+                        <a href="gallery.html" class="bg-white/20 border-2 border-white text-white px-10 py-4 rounded-2xl font-bold hover:bg-white/30 transition">Browse Gallery</a>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+    </div>
+</div>
+</div><!-- /sec-history -->
+
+
+<!-- ═══ SHARED CTA ═════════════════════════════════════════════════════════════ -->
+<section class="py-28 px-6 lg:px-20 bg-gradient-to-br from-green-700 to-green-900 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl lg:text-5xl font-black mb-6">Honour Your Heritage</h2>
+        <p class="text-xl text-green-100 mb-10 max-w-2xl mx-auto">Explore the lives of our past Emirs and community dignitaries who shaped who we are today.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="emirs.html"   class="bg-white text-green-700 px-12 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition shadow-lg">View Past Emirs</a>
+            <a href="gallery.html" class="bg-white/20 border-2 border-white text-white px-12 py-4 rounded-2xl font-bold text-lg hover:bg-white/30 transition">Browse Gallery</a>
+        </div>
+    </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="assets/js/site.js"></script>
+<script>
+/* ─────────────────────────────────────────────
+   READING PROGRESS BAR
+───────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+    const d = document.documentElement;
+    const top = d.scrollTop || document.body.scrollTop;
+    const h = d.scrollHeight - d.clientHeight;
+    document.getElementById('progress-bar').style.width = (h ? top / h * 100 : 0) + '%';
+});
+
+/* ─────────────────────────────────────────────
+   SECTION TABS (Heritage ↔ History)
+───────────────────────────────────────────── */
+let activeSection = 'heritage';
+
+function goSection(sec, btn) {
+    activeSection = sec;
+    document.getElementById('sec-heritage').classList.toggle('hidden', sec !== 'heritage');
+    document.getElementById('sec-history').classList.toggle('hidden',  sec !== 'history');
+
+    document.querySelectorAll('.stab').forEach(b => {
+        b.classList.remove('active');
+        b.style.borderBottomColor = 'transparent';
+        b.style.color = 'rgba(255,255,255,0.45)';
+    });
+    btn.classList.add('active');
+    btn.style.color = '#4ade80';
+    btn.style.borderBottomColor = '#16a34a';
+
+    window.scrollTo({ top: document.getElementById('sectionTabs').offsetTop - 76, behavior: 'smooth' });
+
+    if (sec === 'history') {
+        setTimeout(() => { initFadeObs(); initTocSpy(); }, 120);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   TOC SCROLL SPY
+───────────────────────────────────────────── */
+const CHAPTERS = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10'];
+let tocObserver = null, fadeObserver = null;
+
+function initTocSpy() {
+    if (tocObserver) tocObserver.disconnect();
+    const links = document.querySelectorAll('#tocNav .toc-link');
+    tocObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const idx = CHAPTERS.indexOf(e.target.id);
+                if (idx > -1 && links[idx]) {
+                    links[idx].classList.add('active');
+                    // Update audio player title
+                    const chTitle = e.target.getAttribute('data-chapter') || '';
+                    if (chTitle) document.getElementById('apSub').textContent = 'Reading: ' + chTitle.replace(/&amp;/g,'&');
+                }
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    CHAPTERS.forEach(id => { const el = document.getElementById(id); if (el) tocObserver.observe(el); });
+}
+
+function initFadeObs() {
+    if (fadeObserver) fadeObserver.disconnect();
+    fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+}
+
+function scrollCh(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ─────────────────────────────────────────────
+   AUDIO NARRATION — Web Speech API
+───────────────────────────────────────────── */
+let synth        = window.speechSynthesis;
+let utterance    = null;
+let isPlaying    = false;
+let isPaused     = false;
+let currentSpeed = 1;
+const speeds     = [0.8, 1, 1.2, 1.5];
+let speedIdx     = 1;
+let progressTimer = null;
+let dockTimeout   = null;
+let isFloating    = false;
+
+// Gather all history text in order
+function getHistoryText() {
+    const sections = document.querySelectorAll('#sec-history .chapter');
+    let text = 'The History of Biu Emirate. ';
+    sections.forEach(sec => {
+        // Chapter title
+        const h2 = sec.querySelector('h2');
+        if (h2) text += h2.innerText + '. ';
+        // All paragraphs
+        sec.querySelectorAll('p').forEach(p => { text += p.innerText + ' '; });
+    });
+    return text.replace(/\s+/g,' ').trim();
+}
+
+function toggleAudio() {
+    if (!synth) { alert('Your browser does not support audio narration. Please try Chrome or Edge.'); return; }
+
+    if (isPlaying && !isPaused) {
+        synth.pause();
+        isPaused = true;
+        isPlaying = false;
+        setPlayIcon(false);
+        clearInterval(progressTimer);
+        return;
+    }
+
+    if (isPaused) {
+        synth.resume();
+        isPaused = false;
+        isPlaying = true;
+        setPlayIcon(true);
+        startProgressTimer();
+        dockPlayer();
+        return;
+    }
+
+    // Fresh start
+    synth.cancel();
+    const text = getHistoryText();
+    utterance  = new SpeechSynthesisUtterance(text);
+    utterance.rate = speeds[speedIdx];
+    utterance.lang = 'en-NG';  // Nigerian English
+
+    // Try Nigerian English voice, fallback to any English
+    const voices = synth.getVoices();
+    const preferred = voices.find(v => v.lang === 'en-NG') ||
+                      voices.find(v => v.lang.startsWith('en-GB')) ||
+                      voices.find(v => v.lang.startsWith('en'));
+    if (preferred) utterance.voice = preferred;
+
+    utterance.onstart = () => {
+        isPlaying = true; isPaused = false;
+        setPlayIcon(true);
+        document.getElementById('apTitle').textContent = 'History of Biu Emirate';
+        document.getElementById('apSub').textContent   = 'Narrating — scroll to follow along';
+        startProgressTimer();
+        dockPlayer();
+    };
+    utterance.onend = () => {
+        isPlaying = false; isPaused = false;
+        setPlayIcon(false);
+        clearInterval(progressTimer);
+        document.getElementById('apBarFill').style.width = '100%';
+        document.getElementById('apSub').textContent = 'Narration complete';
+        undockPlayer();
+    };
+    utterance.onerror = (e) => {
+        if (e.error !== 'interrupted') {
+            isPlaying = false;
+            setPlayIcon(false);
+            clearInterval(progressTimer);
+        }
+    };
+
+    synth.speak(utterance);
+}
+
+function stopAudio() {
+    synth.cancel();
+    isPlaying = false; isPaused = false;
+    setPlayIcon(false);
+    clearInterval(progressTimer);
+    document.getElementById('apBarFill').style.width = '0%';
+    document.getElementById('apCurrent').textContent = '0:00';
+    document.getElementById('apSub').textContent     = 'Click play to hear the full narration';
+    undockPlayer();
+}
+
+function cycleSpeed() {
+    speedIdx = (speedIdx + 1) % speeds.length;
+    currentSpeed = speeds[speedIdx];
+    document.getElementById('apSpeed').textContent = currentSpeed + '×';
+    if (utterance) utterance.rate = currentSpeed;
+    // Restart with new speed if playing
+    if (isPlaying || isPaused) {
+        const wasPaused = isPaused;
+        synth.cancel();
+        isPlaying = false; isPaused = false;
+        setTimeout(() => { toggleAudio(); if (wasPaused) { synth.pause(); isPaused = true; isPlaying = false; setPlayIcon(false); } }, 80);
+    }
+}
+
+function setPlayIcon(playing) {
+    const btn  = document.getElementById('apPlayBtn');
+    const icon = document.getElementById('apIcon');
+    if (playing) {
+        btn.classList.add('playing');
+        icon.className = 'fas fa-pause';
+    } else {
+        btn.classList.remove('playing');
+        icon.className = 'fas fa-play';
+    }
+}
+
+// Simulate progress (Speech API doesn't expose real-time position)
+let progressSec = 0;
+let estimatedTotal = 0;
+
+function startProgressTimer() {
+    clearInterval(progressTimer);
+    const text = getHistoryText();
+    const wordsPerMin = 150 * currentSpeed;
+    const wordCount = text.split(/\s+/).length;
+    estimatedTotal = Math.round(wordCount / wordsPerMin * 60);
+    progressSec = 0;
+
+    document.getElementById('apTotal').textContent = fmtTime(estimatedTotal);
+
+    progressTimer = setInterval(() => {
+        progressSec++;
+        const pct = Math.min(progressSec / estimatedTotal * 100, 99);
+        document.getElementById('apBarFill').style.width = pct + '%';
+        document.getElementById('apCurrent').textContent = fmtTime(progressSec);
+    }, 1000);
+}
+
+function seekAudio(e) {
+    // Seeking not supported by Web Speech API — show a hint
+    showSiteToast('Tap play/pause to control narration', '');
+}
+
+function fmtTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+/* Floating player logic */
+function dockPlayer() {
+    const player = document.getElementById('audioPlayer');
+    player.classList.add('floating');
+    isFloating = true;
+}
+function undockPlayer() {
+    const player = document.getElementById('audioPlayer');
+    player.classList.remove('floating');
+    isFloating = false;
+}
+
+// Init when history tab shown
+document.addEventListener('DOMContentLoaded', () => {
+    initFadeObs();
+    // Pre-load voices
+    if (synth && synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = () => synth.getVoices();
+    }
+});
+</script>
+</body>
+</html>

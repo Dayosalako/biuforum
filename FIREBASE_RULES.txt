@@ -1,0 +1,39 @@
+═══════════════════════════════════════════════════════════════════
+ BIU FORUM — Firebase Firestore Security Rules (UPDATED)
+ ✅ Now includes: subscribers collection for newsletter/registry
+ ✅ Works on FREE Spark plan — no billing required
+═══════════════════════════════════════════════════════════════════
+
+Firestore Database → Rules tab → Delete all → Paste below → Publish:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /news/{docId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+    match /events/{docId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+    match /images/{docId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+    match /activity/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // SUBSCRIBERS — anyone can write (subscribe), only admin can read
+    match /subscribers/{docId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}
+
+NOTE: The subscribers rule allows anyone to submit their email
+(public write) but only the logged-in admin can view or delete
+subscriber records. This is the correct and secure setup.

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Biu Forum</title>
+    <meta name="description" content="Browse photos from Biu Emirate community events, cultural celebrations, and development projects.">
+    <meta property="og:title" content="Gallery | Biu Forum">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
+    <style>
+        .gallery-item { transition: all 0.3s ease; cursor: pointer; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay { opacity: 0; transition: opacity 0.3s ease; background: rgba(5,46,22,0.75); }
+        .gallery-item:hover { transform: scale(1.02); }
+        #lightbox { backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- ═══ MOBILE MENU ═══════════════════════════════════════════════════════════ -->
+<div id="mobileMenu" class="fixed inset-0 z-[100] bg-green-950 mobile-nav-transition translate-x-full lg:hidden flex flex-col p-8">
+    <div class="flex justify-between items-center mb-16">
+        <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+        <button onclick="toggleMenu()" class="text-white text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="flex flex-col gap-8 text-3xl font-bold text-green-100/50">
+        <a href="index.html"    onclick="toggleMenu()" class="hover:text-white transition">Home</a>
+        <a href="heritage.html" onclick="toggleMenu()" class="hover:text-white transition">Heritage</a>
+        <a href="emirs.html"    onclick="toggleMenu()" class="hover:text-white transition">Past Emirs</a>
+        <a href="news.html"     onclick="toggleMenu()" class="hover:text-white transition">News</a>
+        <a href="events.html"   onclick="toggleMenu()" class="hover:text-white transition">Events</a>
+        <a href="gallery.html"  onclick="toggleMenu()" class="hover:text-white transition text-white">Gallery</a>
+    </nav>
+    <div class="mt-auto border-t border-white/10 pt-8">
+        <p class="text-green-400 text-sm font-bold uppercase mb-4 tracking-widest">Connect With Us</p>
+        <a href="tel:+2347067589333" class="text-white text-xl font-bold tracking-tight">+234 706 758 9333</a>
+    </div>
+</div>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 glass-nav border-b border-slate-100 px-6 lg:px-20 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="logo.png" alt="Biu Forum" class="h-10 w-auto">
+            <div>
+                <span class="font-extrabold text-lg leading-none tracking-tight block">Biu Forum</span>
+                <span class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Official Platform</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-500">
+            <a href="index.html"    class="hover:text-green-700 transition">Home</a>
+            <a href="heritage.html" class="hover:text-green-700 transition">Heritage</a>
+            <a href="emirs.html"    class="hover:text-green-700 transition">Past Emirs</a>
+            <a href="news.html"     class="hover:text-green-700 transition">News</a>
+            <a href="events.html"   class="hover:text-green-700 transition">Events</a>
+            <a href="gallery.html"  class="text-green-700">Gallery</a>
+            <a href="tel:+2347067589333" class="text-slate-900 border-l pl-6 border-slate-200">
+                <i class="fas fa-phone mr-2 text-green-600"></i>+234 706 758 9333
+            </a>
+        </div>
+        <button onclick="toggleMenu()" class="lg:hidden text-2xl text-slate-800"><i class="fas fa-bars-staggered"></i></button>
+    </div>
+</nav>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════════ -->
+<header class="py-20 px-6 lg:px-20 bg-gradient-to-b from-purple-50 to-white">
+    <div class="max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-purple-100 px-4 py-2 rounded-full text-purple-700 text-xs font-bold uppercase tracking-widest mb-6">
+            <i class="fas fa-images"></i> Photo Gallery
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">Our Community in Pictures</h1>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">Relive memorable moments, cultural celebrations, and community milestones from across the Biu Emirate.</p>
+    </div>
+</header>
+
+<!-- ═══ FILTER + GRID ════════════════════════════════════════════════════════ -->
+<section class="py-16 px-6 lg:px-20 max-w-7xl mx-auto">
+    <div class="flex flex-wrap gap-3 mb-12">
+        <button onclick="filterGallery('all',this)"       class="cat-btn active px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest border-2 border-green-700">All Photos</button>
+        <button onclick="filterGallery('Events',this)"    class="cat-btn px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest border-2 border-slate-200 text-slate-600">Events</button>
+        <button onclick="filterGallery('Culture',this)"   class="cat-btn px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest border-2 border-slate-200 text-slate-600">Culture</button>
+        <button onclick="filterGallery('Projects',this)"  class="cat-btn px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest border-2 border-slate-200 text-slate-600">Projects</button>
+        <button onclick="filterGallery('Community',this)" class="cat-btn px-6 py-3 rounded-full font-bold text-sm uppercase tracking-widest border-2 border-slate-200 text-slate-600">Community</button>
+    </div>
+
+    <!-- Count -->
+    <p id="photoCount" class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">Loading…</p>
+
+    <!-- Grid -->
+    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+    <!-- Placeholder -->
+    <div id="galleryPlaceholder" class="hidden text-center py-20">
+        <i class="fas fa-images text-5xl text-slate-200 mb-6 block"></i>
+        <h3 class="text-2xl font-bold text-slate-400 mb-2">No photos uploaded yet</h3>
+        <p class="text-slate-400">Images uploaded via the Admin panel will appear here automatically.</p>
+        <a href="admin/dashboard.html" class="inline-block mt-6 bg-green-700 text-white px-8 py-3 rounded-full font-bold hover:bg-green-800 transition">Go to Admin</a>
+    </div>
+</section>
+
+<!-- ═══ LIGHTBOX ════════════════════════════════════════════════════════════════ -->
+<div id="lightbox" class="fixed inset-0 z-[200] bg-black/95 hidden items-center justify-center">
+    <button onclick="closeLightbox()" class="absolute top-6 right-8 text-white/60 hover:text-white text-4xl z-10"><i class="fas fa-times"></i></button>
+    <button onclick="prevPhoto()" class="absolute left-4 lg:left-10 text-white/60 hover:text-white text-5xl z-10" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button onclick="nextPhoto()" class="absolute right-4 lg:right-10 text-white/60 hover:text-white text-5xl z-10" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <div class="text-center px-16 max-w-5xl w-full">
+        <img id="lightboxImg" src="" alt="" class="max-h-[75vh] max-w-full mx-auto rounded-2xl shadow-2xl object-contain">
+        <div class="mt-6">
+            <p id="lightboxCaption" class="text-white font-bold text-xl"></p>
+            <div class="flex items-center justify-center gap-6 mt-2">
+                <span id="lightboxCategory" class="text-green-400 text-xs font-bold uppercase tracking-widest"></span>
+                <span id="lightboxDate" class="text-white/40 text-xs"></span>
+                <span id="lightboxCounter" class="text-white/40 text-xs"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
+<div id="footer-placeholder"></div>
+
+<script src="assets/js/site.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+
+if (!firebase.apps.length) firebase.initializeApp({
+    apiKey:            "AIzaSyBH-M2fLyy3vEuh87L3FOZBq79LTxE6I8M",
+    authDomain:        "biu-forum.firebaseapp.com",
+    projectId:         "biu-forum",
+    storageBucket:     "biu-forum.firebasestorage.app",
+    messagingSenderId: "174972307655",
+    appId:             "1:174972307655:web:b374798e9c55fa04c296e2"
+});
+const db = firebase.firestore();
+
+let allImages = [], filteredImages = [], currentIndex = 0;
+
+async function loadGallery() {
+    const grid = document.getElementById('galleryGrid');
+    const ph   = document.getElementById('galleryPlaceholder');
+    grid.innerHTML = '<div class="col-span-4 py-16 text-center"><i class="fas fa-spinner fa-spin text-green-600 text-3xl"></i><p class="text-slate-400 mt-3">Loading gallery…</p></div>';
+    try {
+        const snap = await db.collection('images').orderBy('createdAt','desc').get();
+        allImages  = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        filteredImages = allImages;
+        renderGallery(allImages);
+    } catch(err) {
+        grid.innerHTML = '<div class="col-span-4 py-16 text-center text-slate-400"><i class="fas fa-exclamation-triangle text-3xl mb-3 block text-amber-400"></i>Could not load gallery. Please try again later.</div>';
+    }
+}
+
+function renderGallery(items) {
+    const grid = document.getElementById('galleryGrid');
+    const ph   = document.getElementById('galleryPlaceholder');
+    const ct   = document.getElementById('photoCount');
+    filteredImages = items;
+    if (!items.length) { grid.innerHTML=''; ph.classList.remove('hidden'); ct.textContent='0 Photos'; return; }
+    ph.classList.add('hidden');
+    ct.textContent = items.length + ' Photo' + (items.length!==1?'s':'');
+    const catColors = { Events:'bg-green-600', Culture:'bg-amber-600', Projects:'bg-blue-600', Community:'bg-purple-600' };
+    grid.innerHTML = items.map((img,i) => `
+        <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square bg-slate-100 shadow-md" onclick="openLightbox(${i})">
+            ${img.imageUrl ? `<img src="${escH(img.imageUrl)}" alt="${escH(img.caption||'')}" class="w-full h-full object-cover">` : `<div class="w-full h-full flex items-center justify-center text-slate-300 text-4xl"><i class="fas fa-image"></i></div>`}
+            <div class="gallery-overlay absolute inset-0 flex flex-col items-center justify-center p-4">
+                <i class="fas fa-expand text-white text-3xl mb-3 opacity-90"></i>
+                <p class="text-white text-sm font-bold text-center leading-snug">${escH(img.caption||'')}</p>
+            </div>
+            <div class="absolute top-3 left-3"><span class="px-2 py-1 rounded-full text-[10px] font-bold uppercase text-white ${catColors[img.category]||'bg-slate-600'}">${escH(img.category||'')}</span></div>
+        </div>`).join('');
+}
+
+function filterGallery(cat, btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(cat==='all' ? allImages : allImages.filter(i => i.category===cat));
+}
+
+function openLightbox(i) {
+    currentIndex=i; updateLightbox();
+    document.getElementById('lightbox').classList.replace('hidden','flex');
+    document.body.style.overflow='hidden';
+}
+function updateLightbox() {
+    const img = filteredImages[currentIndex]; if (!img) return;
+    document.getElementById('lightboxImg').src          = img.imageUrl || '';
+    document.getElementById('lightboxCaption').textContent = img.caption  || 'Untitled';
+    document.getElementById('lightboxCategory').textContent= img.category || '';
+    document.getElementById('lightboxDate').textContent    = img.date     || '';
+    document.getElementById('lightboxCounter').textContent = (currentIndex+1)+' / '+filteredImages.length;
+}
+function prevPhoto(){ currentIndex=(currentIndex-1+filteredImages.length)%filteredImages.length; updateLightbox(); }
+function nextPhoto(){ currentIndex=(currentIndex+1)%filteredImages.length; updateLightbox(); }
+function closeLightbox(){ document.getElementById('lightbox').classList.replace('flex','hidden'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e => {
+    if(document.getElementById('lightbox').classList.contains('hidden')) return;
+    if(e.key==='ArrowLeft') prevPhoto();
+    if(e.key==='ArrowRight') nextPhoto();
+    if(e.key==='Escape') closeLightbox();
+});
+function escH(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+loadGallery();
+</script>
+</body>
+</html>
